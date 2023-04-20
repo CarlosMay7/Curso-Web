@@ -1,0 +1,59 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.entrada-blog a {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/** CODIGO AQUI **/
+
+@media (min-width: 768px) {
+    .columnas-iguales {
+        display: flex;
+        gap: 2rem; /*Forma nueva*/
+        justify-content: space-between; /*para alinear el contenido de izquierda a derecha y dejar el medio libre*/
+    }
+}
+
+/*Es parte de la forma antigua de alinear y justificar el contenido en flexbox cuando no existia o el gap no tenia tanto soporte como ahora
+.entrada-blog {
+    ---Una forma
+    flex-basis: calc(50% - 1rem); Calcula la mitad del tamaño y le resta 1 rem
+
+    ---Otra forma
+    Parametros: Factor de crecimiento, factor de reduccion, tamaño base
+    flex: 0 0 calc(50% - 1rem);
+}*/
