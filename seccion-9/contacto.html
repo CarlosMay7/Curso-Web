@@ -51,20 +51,19 @@
         <form class="formulario">    <!--Accesibilidad web, todos deben poder visitar mi sitio-->
             <div class="campo">
                 <label class="campo__label" for="nombre">Nombre</label> <!--Con el for hace referencia a que elemento pertenece y cuando se le hace click se pueden activat coas, en este caso el input con el id nombre-->
-                <input class="campo__field" type="text" placeholder="tu nombre" id="nombre"> <!--El id es para hacer una especificacion al elemento y solo se puede usar una vez en una pagina, se puede poner en otra, pero de igual manera una vez-->
+                <input class="campo__field" type="text" placeholder="Tu nombre" id="nombre"> <!--El id es para hacer una especificacion al elemento y solo se puede usar una vez en una pagina, se puede poner en otra, pero de igual manera una vez-->
             </div>
             <div class="campo">
-                <label class="campo__label" for="email">E-mail</label> 
+                <label class="campo__label--email" for="email">E-mail</label> 
                 <input class="campo__field" type="email" placeholder="E-mail" id="email"> 
             </div>
             <div class="campo">
-                <label class="campo__label" for="nombre">Mensaje</label> <!--Con el for hace referencia a que elemento pertenece y cuando se le hace click se pueden activat coas, en este caso el input con el id nombre-->
+                <label class="campo__label" for="mensaje">Mensaje</label> <!--Con el for hace referencia a que elemento pertenece y cuando se le hace click se pueden activat coas, en este caso el input con el id nombre-->
                 <textarea class="campo__field--textarea" id="mensaje"></textarea>
             </div>
 
             <div class="campo">
                 <input class="boton boton--primario" type="submit" value="Enviar" class="boton boton--primario">
-
             </div>
         </form>
     </main>
