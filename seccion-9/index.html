@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!--Esto es para que muestre caracteres en español como la ñ o acentos-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Este hace proporcional el tamaño segun el dispositivo, util para los media querrys-->
+    <meta name="description" content="Página web sobre el café">
+    <title>Blog cafetero</title>
+        <!--Prefetch-->
+        <!--Es cargar la siguiente pagina que el usuario podria necesitar-->
+        <link rel="prefetch" href="nosotros.html" as="document">
+
+        <!--Preload-->
+        <!--Es cargar lo que necesito desde el inicio-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,700;1,400&display=swap" crossorigin="corssorigon" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Blog<span class="logo__negrita">DeCafé</span></h1>
+                </a>    
+                <nav class="navegacion">
+                    <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
+                    <a class="navegacion__enlace" href="cursos.html">Cursos</a>
+                    <a class="navegacion__enlace" href="contacto.html">Contacto</a>
+                </nav>
+            </div>
+            <nav ></nav>
+        </div>
+        <div class="header__texto">
+            <h2 class="no-margin">Blog de café con consejos y cursos</h2>
+            <p class="no-margin">Aprende de los expertos con las mejores recetas y consejos</p>
+        </div>
+    </header>
+
+    <div class="contenedor contenido-principal">
+        <main class="blog">
+            <h3 class="no-margin">Nuestro blog</h3>
+            <article class="entrada"> <!--Los articles se colocan cuando son noticias o coas asi-->
+                <div class="entrada__imagen">
+                    <picture> <!--Insertar imagenes con diferentes formatos, si no puede tomar el primero, entonces toma el siguiente-->
+                        <source loading="lazy" srcset="img/blog1.webp" type="image/webp">
+                        <img loading="lazy" src="img/blog1.jpg" alt="imagen de blog"> <!--El lazy loading es para que cargue la imagen hasta que aparezca, no desde el inicio-->
+                    </picture>
+                </div>
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Tipos de grano de café</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam a pariatur assumenda laboriosam ipsa ratione, nam esse eum quae recusandae corporis eligendi sit. Debitis, quas at fugiat eius quam eaque?</p>
+                    <a class="boton boton--primario" href="entrada.html">Leer entrada</a>
+                </div>
+            </article>
+
+            <article class="entrada"> <!--Los articles se colocan cuando son noticias o coas asi-->
+                <div class="entrada__imagen">
+                    <picture> <!--Insertar imagenes con diferentes formatos, si no puede tomar el primero, entonces toma el siguiente-->
+                        <source loading="lazy" srcset="img/blog2.webp" type="image/webp">
+                        <img loading="lazy" src="img/blog2.jpg" alt="imagen de blog"> <!--El lazy loading es para que cargue la imagen hasta que aparezca, no desde el inicio-->
+                    </picture>                
+                </div>
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Deliiciosas recetas de café</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam a pariatur assumenda laboriosam ipsa ratione, nam esse eum quae recusandae corporis eligendi sit. Debitis, quas at fugiat eius quam eaque?</p>
+                    <a class="boton boton--primario" href="entrada.html">Leer entrada</a>
+                </div>
+            </article>
+
+            <article class="entrada"> <!--Los articles se colocan cuando son noticias o coas asi-->
+                <div class="entrada__imagen">
+                    <picture> <!--Insertar imagenes con diferentes formatos, si no puede tomar el primero, entonces toma el siguiente-->
+                        <source loading="lazy" srcset="img/blog3.webp" type="image/webp">
+                        <img loading="lazy" src="img/blog3.jpg" alt="imagen de blog"> <!--El lazy loading es para que cargue la imagen hasta que aparezca, no desde el inicio-->
+                    </picture>                
+                </div>
+
+                <div class="entrada__contenido">
+                    <h4 class="no-margin">Beneficios del café</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam a pariatur assumenda laboriosam ipsa ratione, nam esse eum quae recusandae corporis eligendi sit. Debitis, quas at fugiat eius quam eaque?</p>
+                    <a class="boton boton--primario" href="entrada.html">Leer entrada</a>
+                </div>
+            </article>
+        </main>
+
+        <aside class="sidebar"> <!--Se coloca el sidebar cuando es una contenido mas pequeño en un lado-->
+            <h3 class="no-margin">Nuestros cursos y talleres</h3>
+
+            <ul class="cursos no-padding"> <!--Lista no ordenada con viñetas, para que sea con numeros es con ol. Tambien agrega padding-->
+                <li class="widget-curso"> <!--Como son cosas significativas merecen estar en su propio espacio-->
+                    <h4 class="no-margin">Técnicas de extracción de café</h4>
+                    <p class="widget-curso__label">Precio:
+                        <span class="widget-curso__info">Gratis</span>
+                    </p>
+                    <p class="widget-curso__label">Cupo:
+                        <span class="widget-curso__info">7</span>
+                    </p>
+                    <a class="boton boton--secundario" href="entrada.html">Más información</a>
+                </li> 
+
+                <li class="widget-curso"> <!--Como son cosas significativas merecen estar en su propio espacio-->
+                    <h4 class="no-margin">4 Recetas De Café Para Principiantes</h4>
+                    <p class="widget-curso__label">Precio:
+                        <span class="widget-curso__info">Gratis</span>
+                    </p>
+                    <p class="widget-curso__label">Cupo:
+                        <span class="widget-curso__info">20</span>
+                    </p>
+                    <a class="boton boton--secundario" href="entrada.html">Más información sobre nuestros cursos</a> <!--Para google es mejor tener mas descripcion y no solo "Más información"-->
+                </li> 
+            </ul>
+        </aside>
+    </div>
+    
+    <!--Codigo de JavaScript normalmente en el final antes de body-->
+    <script src="js/modernizer.js"></script>
+</body>
+
+<footer class="footer">
+    <div class="contenedor">
+        <div class="barra">
+            <a class="logo" href="index.html">
+                <h1 class="logo__nombre no-margin centrar-texto">Blog<span class="logo__negrita">DeCafé</span></h1>
+            </a>    
+            <nav class="navegacion">
+                <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
+                <a class="navegacion__enlace" href="cursos.html">Cursos</a>
+                <a class="navegacion__enlace" href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+        <nav ></nav>
+    </div>
+</footer>
+</html>

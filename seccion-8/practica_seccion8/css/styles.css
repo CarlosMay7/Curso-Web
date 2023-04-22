@@ -1,0 +1,90 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+h1 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+p {
+    font-size: 2rem;
+}
+
+
+img {
+    width: 80%;
+    margin: 0 3rem;
+}
+
+.principal {
+    display: grid;
+    grid-template-areas:"arriba"
+                        "enmedio"
+                        "abajo";
+}
+
+.pequeno {
+    grid-area: abajo;
+}
+
+.grande {
+    grid-area: enmedio;
+}
+
+.responsive {
+    grid-area: arriba;
+}
+@media (min-width: 768px) {
+    .principal {
+        grid-template-areas:"grande pequeno responsive";
+        grid-template-columns: 3fr 1fr 2fr;
+        column-gap: 4rem;
+        grid-auto-flow: column;
+    }
+
+    .pequeno {
+        grid-area: pequeno;
+    }
+    
+    .grande {
+        grid-area: grande;
+    }
+    
+    .responsive {
+        grid-area: responsive;
+    }
+}
+
+.navegacion {
+    display: flex;
+    background-color: beige;
+    padding: 2rem;
+    justify-content:space-around;
+}
+
+a {
+    text-decoration: none;
+    color: blueviolet;
+}
+
+a:hover {
+    background-color: aqua;
+    font-size: 4rem;
+}
