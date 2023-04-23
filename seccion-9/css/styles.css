@@ -279,7 +279,7 @@ img {
 }
 
 .campo__label--email {
-    flex-basis: 0 0 9rem; /*Esto fija en 9rem al tamaño y hace que todo el espacio restante se le de a sus hijos*/
+    flex-basis: 0 0 9rem;
     text-align: right;
     padding-right: 3.65rem;
 }
@@ -290,5 +290,6 @@ img {
 }
 
 .campo__field--textarea {
+    flex:1;
     height: 20rem;
 }
