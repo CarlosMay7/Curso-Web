@@ -1,3 +1,4 @@
+
 const usuarioAutenticado = new Promise( (resolve /*Se ejecuta cuando se cumple*/, reject/*Cuando no*/) => {
     const auth = true;
 
@@ -14,6 +15,6 @@ usuarioAutenticado
 /*Existen 3 valores
 
 Pending: No se ha cumplido ni rechazado
-Fullfilled :Completado
-Rejected : Rechazado
+Fullfilled: Completado
+Rejected: Rechazado
 */

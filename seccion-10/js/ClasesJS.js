@@ -26,6 +26,6 @@ class Libro extends Producto{
     }
 }
 
-const libro = new libro("JavaScript", 150, "7948651");
+const libro = new Libro("JavaScript", 150, "7948651");
 
 const libroFormateado = libro.formatearProducto();
