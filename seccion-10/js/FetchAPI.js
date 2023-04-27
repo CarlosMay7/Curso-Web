@@ -30,7 +30,7 @@ async function obtenerEmpleados (){
 //Usando async/await 
 //Para el uso de promises no es funcion asincrona
 const resultado = await fetch(archivo);
-const datos = await resultado.json;
+const datos = await resultado.json();
 console.log(datos);
 }
 

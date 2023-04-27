@@ -24,3 +24,6 @@ function formatear (producto){
 producto2.prototype.formatearProducto = function() {
     return `El producto es ${this.nombre} con un precio de ${this.precio} . Mensaje creado con prototipo`;
 }
+
+//El this se utiliza para hcer referencia al objeto del cual se esta "utilizando", como si se dijera "El nombre de este objeto es" o
+//"La caracteristica de este objeto es"
