@@ -51,7 +51,8 @@ puntaje +=2;
 
 //Objeto Math
 
-//Se pueden ver las funciones que trae Math en la consola del navegador
+//Se pueden ver las funciones que trae Math en la consola del navegador, son principalmente las funciones de matematicas 
+//como redondeo, valores absolutos, raices, potencias, entre otras
 
 let prueba;
 
