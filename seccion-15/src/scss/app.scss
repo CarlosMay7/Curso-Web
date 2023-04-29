@@ -1,0 +1,7 @@
+$rojo : red; //Se usan las mismas reglas de nombrado normales
+
+//Las variables se definen en cualquier lugar y se llaman igual, no necesita de root
+
+body {
+    background-color: $rojo;
+}

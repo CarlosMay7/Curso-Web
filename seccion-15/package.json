@@ -1,0 +1,19 @@
+{
+  "name": "seccion-15",
+  "version": "1.0.0",
+  "description": "Proyecto con sass, gulp y html",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass -watch src/scss:build/css"
+  },
+  "keywords": [
+    "SASS",
+    "Gulp"
+  ],
+  "author": "Carlos May",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "sass": "^1.62.1"
+  }
+}
