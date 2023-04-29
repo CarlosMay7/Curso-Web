@@ -1,0 +1,7 @@
+@use 'base/variables' as alias; //Aqui puede ser la direccion absoluta o relativa
+//Se puede "cambiar" o "renombrar" la instancia para evitar confusiones
+//Crea las instancias de variables, asi que para acceder a sus propiedades se usa el .nombrePropiedad
+
+h1 {
+    color: alias.$rojo;
+}
