@@ -1,7 +1,10 @@
-$rojo : red; //Se usan las mismas reglas de nombrado normales
-
 //Las variables se definen en cualquier lugar y se llaman igual, no necesita de root
 
-body {
-    background-color: $rojo;
-}
+/*
+@import "base/variables"; //Forma anterior de importar otros archivos, no necesita el _ al inicio
+//Sirve para dividir la funcionalidad de las hojas de estilo
+//Cuando se usa import, las variables se toman de manera global en todos los archivos
+*/
+
+@use 'base'; //Compila los archivos a los que apunta el archivo llamado. Crea instancias locales, adeiferencia del import
+@use 'layout';

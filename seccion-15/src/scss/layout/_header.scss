@@ -1,0 +1,25 @@
+@use "../base/variables" as var;
+
+.header {
+    background-color: var.$verde;
+
+    //Como hay un h1 dentro del header se usa la anidacion
+    h1 {
+        color: var.$blanco;
+    }
+
+    //Podria estar la navegacion principal ya que esta dentro del header pero ahi entraria el caso de anidacionesmuy profundas
+    //lo que llega a ser un problema y mejor dejarlo en un bloque a parte
+}
+
+.navegacion-principal {
+    a {
+        color: var.$blanco; 
+    }
+
+    //SASS al compilar agrega espacios entre selectores, pero si hace esto ya no sirve nuestro hover u otros modificadores
+    //asi que se usa el & para decirle que no agregue el espacio
+    &:hover { 
+        color: var.$amarillo;
+    }
+}
