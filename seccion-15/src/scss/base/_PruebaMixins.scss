@@ -1,0 +1,16 @@
+//Mixins muy utiles para codigo repetitivo como media querrys o codigo de botones
+//Soportan estructuras de control
+
+@mixin heading { //Propiedades que se pueden repetir en muchos lugares del codigo
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    color: black;
+    letter-spacing: 1px;
+}
+@mixin headingInteligente($color: blue) { //Los mixins inteligentes son como funciones con parametros, se le manda una variable con la sintaxis de $nombre
+    //Pueden tener parametros por defecto con :parametroDefault
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    color: $color;
+    letter-spacing: 1px;
+}

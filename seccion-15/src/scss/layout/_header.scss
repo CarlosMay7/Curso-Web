@@ -1,4 +1,7 @@
 @use "../base/variables" as var;
+@use '../base/mixins' as m; //Se importa igual que los otros archivos, con @use "direccion" y un alias si se quiere
+//Recomendable usar m para alias de los mixins
+@use "../base/PruebaMixins" as pmix;
 
 .header {
     background-color: var.$verde;
@@ -6,15 +9,46 @@
     //Como hay un h1 dentro del header se usa la anidacion
     h1 {
         color: var.$blanco;
+        text-align: center;
+
+        @include m.tablet{
+            margin: 0;
+        }
+
     }
 
-    //Podria estar la navegacion principal ya que esta dentro del header pero ahi entraria el caso de anidacionesmuy profundas
+    .contenido-header {
+        @include m.tablet{
+            //Lo que se coloque aqui se manda al mixin para luego compilar
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+        }        
+    }
+
+
+    //Podria estar la navegacion principal ya que esta dentro del header pero ahi entraria el caso de anidaciones muy profundas
     //lo que llega a ser un problema y mejor dejarlo en un bloque a parte
 }
 
 .navegacion-principal {
+    @include m.tablet{
+        display: flex;
+        gap: 2rem;
+    }
     a {
         color: var.$blanco; 
+        display: block;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 2.4rem;
+
+        @include m.tablet{
+            margin: 0;
+        }
+
     }
 
     //SASS al compilar agrega espacios entre selectores, pero si hace esto ya no sirve nuestro hover u otros modificadores
@@ -22,4 +56,12 @@
     &:hover { 
         color: var.$amarillo;
     }
+}
+
+.prueba-mixin {
+    @include pmix.heading; //La etiqueta include para incluir el elemento de un mixin.elemento deseado
+}
+
+.prueba-mixin-inteligente {
+    @include pmix.headingInteligente(var.$morado);
 }
