@@ -1,0 +1,49 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.video {
+    position: relative;
+    max-height: 70rem;
+    min-height: 50rem;
+    overflow: hidden; //Para que si el video excede, no se muestre lo que sobra
+
+    .overlay {
+        position: absolute;
+        background-color: rebeccapurple;
+        height: 100%;
+        width: 100%;
+        background: rgb(2,0,36); //Fondo generado con css gradient
+        background: linear-gradient(70deg, rgba(2,0,36,1) 0%, rgba(172,30,143,0.3) 100%, rgba(0,212,255,1) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    video {    
+        display: block; //Hace que no se desborden
+        width: auto;
+        @include m.desktop{
+            width: 100%;
+        }
+    }
+}
+
+.contenido-video {
+    z-index: 10; //Cuando se tenga la posicion relativa y absoluta puede que una etiqueta o contenido se sobreponga a otro
+    //Con el z index se mueve el contenido en el eje 
+    h2 {
+        font-size: 7rem;
+        color: v.$blanco;
+        margin: 0;
+    }
+
+    p {
+        color: v.$blanco;
+        background-color: v.$rosa;
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-weight: bold;
+        margin: 0;
+        font-size: 2rem;
+    }
+}

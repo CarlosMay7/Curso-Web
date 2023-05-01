@@ -1,6 +1,16 @@
-const {src, dest, watch} = require("gulp");
+const {src, dest, watch, parallel} = require("gulp");
+
+//Dependencias CSS
 const sass  = require("gulp-sass")(require("sass"));
 const plumber = require("gulp-plumber");
+
+//Dependencias imagenes
+
+const cache = require('gulp-cache');
+const webp = require('gulp-webp');
+const imagemin = require('gulp-imagemin');
+const avif = require('gulp-avif');
+
 
 function css( callback ){
     //Identificar o ubicar el archivo de sass
@@ -17,8 +27,47 @@ function css( callback ){
         .pipe(sass()) //Compila la hoja utilizando el script
         .pipe(dest("build/css")); //Dice donde guardar el resultado 
 
-    callback();
+    callback(); //Callback de finalizacion de la tarea, forma anterior de codigo asincrono
 
+}
+
+function imagenes( done ){
+
+    const opciones = {
+        optimizationLevel : 3 //Aligera las imagenes
+    }
+
+    src('src/img/**/*.{jpg,png}')
+    .pipe(cache(imagemin(opciones)))
+    .pipe(dest("build/img"));
+
+    done();
+}
+
+function versionWebp(done){
+
+    const opciones = {
+        quality:50, 
+    };
+
+    src('src/img/**/*.{jpg,png}'). //Cuando se busca en mas de un formato se puede colocar en llaves
+        pipe(webp(opciones)).
+        pipe(dest('build/img'));
+
+        done();
+}
+
+function versionAvif(done){
+
+    const opciones = {
+        quality:50, 
+    };
+
+    src('src/img/**/*.{jpg,png}'). //Cuando se busca en mas de un formato se puede colocar en llaves
+        pipe(avif(opciones)).
+        pipe(dest('build/img'));
+
+        done();
 }
 
 function dev ( done) {
@@ -29,4 +78,7 @@ function dev ( done) {
 }
 
 exports.css = css;
-exports.dev = dev;
+exports.imagenes = imagenes;
+exports.versionWebp = versionWebp;
+exports.versionAvif = versionAvif;
+exports.dev = parallel(imagenes, versionAvif, versionWebp, dev); //Parallel ejecuta las tareas al mismo tiempo

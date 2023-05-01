@@ -1,0 +1,30 @@
+@mixin telefono{
+    @media(min-width: 480px){
+        @content; //Hace que todo el contenido que se coloque al llamar a este mixin se coloque en este espacio
+    }
+}
+
+@mixin tablet{
+    @media (min-width: 768px){
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media (min-width: 992px){
+        @content;
+    }
+}
+
+@mixin desktopXL{
+    @media (min-width: 1000spx){
+        @content;
+    }
+}
+
+@mixin grid($columnas, $espacio) {
+    display: grid;
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $espacio;
+    padding: 5rem 0;
+}
