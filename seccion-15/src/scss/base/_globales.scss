@@ -12,6 +12,14 @@ html {
 body {
     font-family: var.$fuentePrincipal;
     font-size: 1.6rem;
+
+    &.no-scroll {
+        overflow: hidden;
+    }
+
+    &.body-scroll {
+        padding-top: 8.6rem;;
+    }
 }
 
 p {
