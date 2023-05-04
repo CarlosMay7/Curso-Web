@@ -89,7 +89,7 @@ Despues de la columna por la que ordenará se puede poner ASC/DESC si se desea a
 Los registros cuando se borran dejan el espacio "ocupado" porque cuando se agrega un nuevo registro se agrega al final, no en los espacios donde se eliminó algo
 - DELETE FROM nombre_tabla WHERE nombre_columna_condicion = valor_condicion;
 
-#### Modificar una tabla existente
+#### Agregar una columna
 - ALTER TABLE nombre_tabla ADD nombre_nueva_columna TIPO_DATO(extension) campos extra;
 
 #### Modificar una columna
@@ -126,4 +126,4 @@ El ' ' es para añadir un espacio entre ambas columnas, como concatenar una colu
 - SELECT * FROM nombre_tabla WHERE nombre_columna_donde_buscar condicion AND otra_columna condicion;
 
 #### Se pueden combinar
-- SELECT * FROM nombre_tabla WHERE nombre_columna_donde_buscar IN(valores) AND otra_columna condicion;
+- SELECT * FROM nombre_tabla WHERE nombre_columna_donde_buscar IN(valores) AND otra_columna condicion;SELET ACT anctra

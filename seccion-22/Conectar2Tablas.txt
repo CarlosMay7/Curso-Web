@@ -1,0 +1,251 @@
+mysql> CREATE TABLE clientes;
+    -> id INT (11) NOT NULL AUTO_INCREMENT,
+    -> nombre VARCHAR(60) NOT NULL,
+    -> apellido VARCHAR(60) NOT NULL,
+    -> telefono VARCHAR(10) NOT NULL,
+    -> email VARCHAR(30) NOT NULL UNIQUE,
+    -> PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_appsalon |
++--------------------+
+| clientes           |
+| reservaciones      |
+| servicios          |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> INSERT INTO clientes (nombre, apellido, telefono, email) VALUES ("Carlos", "May", "9992457882", "cm@gmail.com");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM clientes;
++----+--------+----------+------------+--------------+
+| id | nombre | apellido | telefono   | email        |
++----+--------+----------+------------+--------------+
+|  1 | Carlos | May      | 9992457882 | cm@gmail.com |
++----+--------+----------+------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_appsalon |
++--------------------+
+| clientes           |
+| reservaciones      |
+| servicios          |
++--------------------+
+3 rows in set (0.00 sec)
+mysql> CREATE TABLE citas (
+    -> id INT(11) NOT NULL AUTO_INCREMENT,
+    -> fecha DATE NOT NULL,
+    -> hora TIME NOT NULL,
+    -> clienteId INT(11) NOT NULL,
+    -> PRIMARY KEY(id),
+    -> KEY clienteId (clienteId),
+    -> CONSTRAINT cliente_FK
+    -> FOREIGN KEY (clienteId)
+    -> REFERENCES clientes (id)
+    -> );
+Query OK, 0 rows affected, 2 warnings (0.04 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_appsalon |
++--------------------+
+| citas              |
+| clientes           |
+| reservaciones      |
+| servicios          |
++--------------------+
+4 rows in set (0.00 sec)
+mysql> INSERT INTO citas (fecha, hora, clienteId) VALUES
+    -> ("2021-06-28", '10:30:00', 1)
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM clientes;
++----+--------+----------+------------+--------------+
+| id | nombre | apellido | telefono   | email        |
++----+--------+----------+------------+--------------+
+|  1 | Carlos | May      | 9992457882 | cm@gmail.com |
++----+--------+----------+------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM citas;
++----+------------+----------+-----------+
+| id | fecha      | hora     | clienteId |
++----+------------+----------+-----------+
+|  1 | 2021-06-28 | 10:30:00 |         1 |
++----+------------+----------+-----------+
+1 row in set (0.00 sec)
+
+-----------------------------------------RELACIONANDO DOS TABLAS CON JOIN---------------------------------------------------
+
+mysql> SELECT * FROM citas
+    -> INNER JOIN clientes ON clientes.id = citas.clienteID;
++----+------------+----------+-----------+----+--------+----------+------------+--------------+
+| id | fecha      | hora     | clienteId | id | nombre | apellido | telefono   | email        |
++----+------------+----------+-----------+----+--------+----------+------------+--------------+
+|  1 | 2021-06-28 | 10:30:00 |         1 |  1 | Carlos | May      | 9992457882 | cm@gmail.com |
++----+------------+----------+-----------+----+--------+----------+------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM citas
+    -> LEFT JOIN clientes ON clientes.id = citas.clienteID;
++----+------------+----------+-----------+------+--------+----------+------------+--------------+
+| id | fecha      | hora     | clienteId | id   | nombre | apellido | telefono   | email        |
++----+------------+----------+-----------+------+--------+----------+------------+--------------+
+|  1 | 2021-06-28 | 10:30:00 |         1 |    1 | Carlos | May      | 9992457882 | cm@gmail.com |
++----+------------+----------+-----------+------+--------+----------+------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM citas
+    -> RIGHT JOIN clientes ON clientes.id = citas.clienteID;
++------+------------+----------+-----------+----+--------+----------+------------+--------------+
+| id   | fecha      | hora     | clienteId | id | nombre | apellido | telefono   | email        |
++------+------------+----------+-----------+----+--------+----------+------------+--------------+
+|    1 | 2021-06-28 | 10:30:00 |         1 |  1 | Carlos | May      | 9992457882 | cm@gmail.com |
++------+------------+----------+-----------+----+--------+----------+------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO clientes (nombre, apellido, telefono, email) VALUES
+    -> ("Cristiano", "Dos Santos", "9998254575", "bicho.siuu@outlook.com");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM clientes;
++----+-----------+------------+------------+------------------------+
+| id | nombre    | apellido   | telefono   | email                  |
++----+-----------+------------+------------+------------------------+
+|  1 | Carlos    | May        | 9992457882 | cm@gmail.com           |
+|  2 | Cristiano | Dos Santos | 9998254575 | bicho.siuu@outlook.com |
++----+-----------+------------+------------+------------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM citas
+    -> RIGHT JOIN clientes ON clientes.id = citas.clienteID;
++------+------------+----------+-----------+----+-----------+------------+------------+------------------------+
+| id   | fecha      | hora     | clienteId | id | nombre    | apellido   | telefono   | email                  |
++------+------------+----------+-----------+----+-----------+------------+------------+------------------------+
+|    1 | 2021-06-28 | 10:30:00 |         1 |  1 | Carlos    | May        | 9992457882 | cm@gmail.com           |
+| NULL | NULL       | NULL     |      NULL |  2 | Cristiano | Dos Santos | 9998254575 | bicho.siuu@outlook.com |
++------+------------+----------+-----------+----+-----------+------------+------------+------------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM citas
+    -> LEFT JOIN clientes ON clientes.id = citas.clienteID;
++----+------------+----------+-----------+------+--------+----------+------------+--------------+
+| id | fecha      | hora     | clienteId | id   | nombre | apellido | telefono   | email        |
++----+------------+----------+-----------+------+--------+----------+------------+--------------+
+|  1 | 2021-06-28 | 10:30:00 |         1 |    1 | Carlos | May      | 9992457882 | cm@gmail.com |
++----+------------+----------+-----------+------+--------+----------+------------+--------------+
+1 row in set (0.00 sec)
+
+--------------------------------Creando Relación muchos a muchos con tabla pivote--------------------------------------------------------
+
+mysql> CREATE TABLE citasServicios (
+    -> id INT(11) AUTO_INCREMENT,
+    -> citaId INT(11) NOT NULL,
+    -> servicioId INT(11) NOT NULL,
+    -> PRIMARY KEY (id),
+    -> KEY citaId (citaId),
+    -> CONSTRAINT citas_FK
+    -> FOREIGN KEY (citaId)
+    -> REFERENCES citas (id),
+    -> KEY servicioId (servicioId),
+    -> CONSTRAINT servicios_FK
+    -> FOREIGN KEY (servicioId)
+    -> REFERENCES servicios (id)
+    -> );
+Query OK, 0 rows affected, 3 warnings (0.03 sec)
+
+mysql> SELECT * FROM citas;
++----+------------+----------+-----------+
+| id | fecha      | hora     | clienteId |
++----+------------+----------+-----------+
+|  1 | 2021-06-28 | 10:30:00 |         1 |
++----+------------+----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM servicios;
++----+-------------------------+--------+
+| id | nombre                  | precio |
++----+-------------------------+--------+
+|  1 | Corte de Cabello Niño   |  60.00 |
+|  2 | Corte de Cabello Hombre |  80.00 |
+|  3 | Corte de Barba          |  60.00 |
+|  4 | Peinado Mujer           |  80.00 |
+|  5 | Peinado Hombre          |  60.00 |
+|  6 | Tinte                   | 300.00 |
+|  7 | Uñas                    | 400.00 |
+|  8 | Lavado de Cabello       |  50.00 |
+|  9 | Tratamiento Capilar     | 150.00 |
++----+-------------------------+--------+
+9 rows in set (0.00 sec)
+
+mysql>  INSERT INTO citasServicios (citaId, servicioId) VALUES (1, 6);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM citasServicios;
++----+--------+------------+
+| id | citaId | servicioId |
++----+--------+------------+
+|  1 |      1 |          6 |
++----+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM citasServicios
+    -> LEFT JOIN citas ON citas.id = citasServicios.citaId
+    -> LEFT JOIN servicios ON servicios.id = citasServicios.servicioId;
++----+--------+------------+------+------------+----------+-----------+------+--------+--------+
+| id | citaId | servicioId | id   | fecha      | hora     | clienteId | id   | nombre | precio |
++----+--------+------------+------+------------+----------+-----------+------+--------+--------+
+|  1 |      1 |          6 |    1 | 2021-06-28 | 10:30:00 |         1 |    6 | Tinte  | 300.00 |
++----+--------+------------+------+------------+----------+-----------+------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql>  INSERT INTO citasServicios (citaId, servicioId) VALUES (1, 3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  INSERT INTO citasServicios (citaId, servicioId) VALUES (1, 7);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM citasServicios;
++----+--------+------------+
+| id | citaId | servicioId |
++----+--------+------------+
+|  1 |      1 |          6 |
+|  2 |      1 |          3 |
+|  3 |      1 |          7 |
++----+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM citasServicios
+    -> LEFT JOIN citas ON citas.id = citasServicios.citaId
+    -> LEFT JOIN servicios ON servicios.id = citasServicios.servicioId;
++----+--------+------------+------+------------+----------+-----------+------+----------------+--------+
+| id | citaId | servicioId | id   | fecha      | hora     | clienteId | id   | nombre         | precio |
++----+--------+------------+------+------------+----------+-----------+------+----------------+--------+
+|  1 |      1 |          6 |    1 | 2021-06-28 | 10:30:00 |         1 |    6 | Tinte          | 300.00 |
+|  2 |      1 |          3 |    1 | 2021-06-28 | 10:30:00 |         1 |    3 | Corte de Barba |  60.00 |
+|  3 |      1 |          7 |    1 | 2021-06-28 | 10:30:00 |         1 |    7 | Uñas           | 400.00 |
++----+--------+------------+------+------------+----------+-----------+------+----------------+--------+
+3 rows in set (0.00 sec)
+
+-----------------------------------------utilizando múltiples Joins-------------------------------------------------------
+
+mysql> SELECT * FROM citasServicios
+    -> LEFT JOIN citas ON citas.id = citasServicios.citaId
+    -> LEFT JOIN clientes ON citas.clienteId = clientes.Id
+    -> LEFT JOIN servicios ON servicios.id = citasServicios.servicioId;
++----+--------+------------+------+------------+----------+-----------+------+--------+----------+------------+--------------+------+----------------+--------+
+| id | citaId | servicioId | id   | fecha      | hora     | clienteId | id   | nombre | apellido | telefono   | email        | id   | nombre         | precio |
++----+--------+------------+------+------------+----------+-----------+------+--------+----------+------------+--------------+------+----------------+--------+
+|  1 |      1 |          6 |    1 | 2021-06-28 | 10:30:00 |         1 |    1 | Carlos | May      | 9992457882 | cm@gmail.com |    6 | Tinte          | 300.00 |
+|  2 |      1 |          3 |    1 | 2021-06-28 | 10:30:00 |         1 |    1 | Carlos | May      | 9992457882 | cm@gmail.com |    3 | Corte de Barba |  60.00 |
+|  3 |      1 |          7 |    1 | 2021-06-28 | 10:30:00 |         1 |    1 | Carlos | May      | 9992457882 | cm@gmail.com |    7 | Uñas           | 400.00 |
++----+--------+------------+------+------------+----------+-----------+------+--------+----------+------------+--------------+------+----------------+--------+
+3 rows in set (0.00 sec)
