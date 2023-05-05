@@ -28,3 +28,15 @@
     gap: $espacio;
     padding: 5rem 0;
 }
+
+@mixin reset-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin oscurecer ($color, $porcentaje){
+    li:nth-child(odd) { //Selecciona a los hijos impares
+        background-color: darken($color, $porcentaje); //Funcion scss que oscurece el color que se le inserta en un porcentaje
+    }
+}

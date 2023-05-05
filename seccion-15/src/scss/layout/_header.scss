@@ -6,6 +6,16 @@
 .header {
     background-color: var.$verde;
 
+    @include m.tablet{
+        &.fijo {
+            left: 0; //Lleva el elemento al punto 0 de la izquierda
+            top: 0;
+            position: fixed;
+            width: 100%;
+            box-shadow: .1rem .2rem .3rem #333;
+        }        
+    }
+
     //Como hay un h1 dentro del header se usa la anidacion
     h1 {
         color: var.$blanco;

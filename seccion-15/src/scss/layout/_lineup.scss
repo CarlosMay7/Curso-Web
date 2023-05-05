@@ -11,7 +11,7 @@
     }
     .dia {
         text-transform: uppercase;
-        margin-bottom: 5rem;
+        margin: 5rem 0;
     }
 }
 
@@ -51,10 +51,27 @@
     background-image: url("../img/icono_rock.png");
 }
 
+.calendario {
+    @include m.reset-lista;
+
+    li {
+        padding: 2.5rem;
+        font-weight: bold;
+    }
+
+    span {
+        font-weight: normal;
+    }
+}
+
 .bg-amarillo {
     background-color: v.$amarillo;
+
+    @include m.oscurecer(v.$amarillo, 10%);
 }
 
 .bg-verde {
     background-color: v.$verde;
+    
+    @include m.oscurecer(v.$verde, 10%);
 }
