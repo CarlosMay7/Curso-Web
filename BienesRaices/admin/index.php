@@ -1,7 +1,7 @@
 <?php
     $resultado = $_GET["resultado"] ?? null; //El ?? es como un placeholder, si no encuentra el valor de resultado con el get lo toma como null
 
-    require "/includes/funciones.php";
+    require "../includes/funciones.php";
     incluirTemplate("header");
 ?>
 
