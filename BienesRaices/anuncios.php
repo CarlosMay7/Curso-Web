@@ -1,5 +1,5 @@
 <?php
-    require "/includes/funciones.php";
+    require "includes/funciones.php";
     incluirTemplate("header");
 ?>
 
@@ -10,9 +10,9 @@
             <div class="contenedor-auncios">
                 <div class="anuncio">
                     <picture>
-                        <source srcset="//build/img/anuncio1.webp" type="image/webp">
-                        <source srcset="//build/img/anuncio1.jpg" type="image/jpeg">
-                        <img loading="lazy" src="//build/img/anuncio1.jpg" alt="anuncio">
+                        <source srcset="/build/img/anuncio1.webp" type="image/webp">
+                        <source srcset="/build/img/anuncio1.jpg" type="image/jpeg">
+                        <img loading="lazy" src="/build/img/anuncio1.jpg" alt="anuncio">
                     </picture>
     
                     <div class="contenido-anuncio">
@@ -22,27 +22,27 @@
     
                         <ul class="iconos-caracteristicas">
                             <li>
-                                <img class="figura" loading="lazy" src="//build/img/icono_wc.svg" alt="WC">
+                                <img class="figura" loading="lazy" src="/build/img/icono_wc.svg" alt="WC">
                                 <p>3</p>
                             </li>
                             <li>
-                                <img class="figura" loading="lazy" src="//build/img/icono_estacionamiento.svg" alt="Estacionamiento">
+                                <img class="figura" loading="lazy" src="/build/img/icono_estacionamiento.svg" alt="Estacionamiento">
                                 <p>3</p>
                             </li>
                             <li>
-                                <img class="figura" loading="lazy" src="//build/img/icono_dormitorio.svg" alt="Recamaras">
+                                <img class="figura" loading="lazy" src="/build/img/icono_dormitorio.svg" alt="Recamaras">
                                 <p>3</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                        <a href="anuncio.php" class="boton-amarillo-block">Ver Propiedad</a>
                     </div>
                 </div><!--Anuncio-->
     
                 <div class="anuncio">
                     <picture>
-                        <source srcset="//build/img/anuncio2.webp" type="image/webp">
-                        <source srcset="//build/img/anuncio2.jpg" type="image/jpeg">
-                        <img loading="lazy" src="//build/img/anuncio2.jpg" alt="anuncio">
+                        <source srcset="/build/img/anuncio2.webp" type="image/webp">
+                        <source srcset="/build/img/anuncio2.jpg" type="image/jpeg">
+                        <img loading="lazy" src="/build/img/anuncio2.jpg" alt="anuncio">
                     </picture>
     
                     <div class="contenido-anuncio">
@@ -52,19 +52,19 @@
     
                         <ul class="iconos-caracteristicas">
                             <li>
-                                <img class="figura" loading="lazy" src="//build/img/icono_wc.svg" alt="WC">
+                                <img class="figura" loading="lazy" src="/build/img/icono_wc.svg" alt="WC">
                                 <p>3</p>
                             </li>
                             <li>
-                                <img class="figura" loading="lazy" src="//build/img/icono_estacionamiento.svg" alt="Estacionamiento">
+                                <img class="figura" loading="lazy" src="/build/img/icono_estacionamiento.svg" alt="Estacionamiento">
                                 <p>3</p>
                             </li>
                             <li>
-                                <img class="figura" loading="lazy" src="//build/img/icono_dormitorio.svg" alt="Recamaras">
+                                <img class="figura" loading="lazy" src="/build/img/icono_dormitorio.svg" alt="Recamaras">
                                 <p>3</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                        <a href="anuncio.php" class="boton-amarillo-block">Ver Propiedad</a>
                     </div>
                 </div> <!--Anuncio-->
     
@@ -94,7 +94,7 @@
                                 <p>3</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                        <a href="anuncio.php" class="boton-amarillo-block">Ver Propiedad</a>
                     </div>
                 </div><!--Anuncio-->
                 
@@ -124,7 +124,7 @@
                                 <p>3</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                        <a href="anuncio.php" class="boton-amarillo-block">Ver Propiedad</a>
                     </div>
                 </div><!--Anuncio-->
 
@@ -154,7 +154,7 @@
                                 <p>3</p>
                             </li>
                         </ul>
-                        <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                        <a href="anuncio.php" class="boton-amarillo-block">Ver Propiedad</a>
                     </div>
                 </div> <!--Anuncio-->
 

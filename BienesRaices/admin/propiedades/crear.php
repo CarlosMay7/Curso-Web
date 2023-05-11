@@ -1,6 +1,6 @@
 <?php
     //Base de datos
-    require "/includes/config/database.php";
+    require "../../includes/config/database.php";
 
     $db = conectarDB();
 
@@ -108,7 +108,7 @@
         }
     }
 
-    require "/includes/funciones.php";
+    require "../../includes/funciones.php";
     incluirTemplate("header");
 ?>
 

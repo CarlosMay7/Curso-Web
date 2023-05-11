@@ -1,5 +1,5 @@
 <?php
-    require "/includes/funciones.php";
+    require "includes/funciones.php";
     incluirTemplate("header");
 ?>
     <main class="contenedor seccion contenido-centrado">
@@ -15,7 +15,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="/entrada.html">
+                <a href="/entrada.php">
                     <h4>Entrada en el techo de tu casa</h4>
                     <p>Escrito el: <span>06/08/2023</span> por: <span>Admin</span></p>
 
@@ -34,7 +34,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="/entrada.php">
                     <h4>Guia para la decoración de tu hogar</h4>
                     <p>Escrito el: <span>06/08/2023</span> por: <span>Admin</span></p>
 
@@ -53,7 +53,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="/entrada.php">
                     <h4>Guia para la decoración de tu hogar</h4>
                     <p>Escrito el: <span>06/08/2023</span> por: <span>Admin</span></p>
 
@@ -72,7 +72,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="/entrada.html">
+                <a href="/entrada.php">
                     <h4>Guia para la decoración de tu hogar</h4>
                     <p>Escrito el: <span>06/08/2023</span> por: <span>Admin</span></p>
 
