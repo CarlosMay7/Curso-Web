@@ -1,49 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes raices</title>
-
-    <link rel="preload" href="build/css/app.css" as="style">
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-
-    <header class="header inicio">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                <img src="build/img/logo.svg" alt="Logo">
-                </a>
-
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="Icono menu responsive">
-                </div>
-                <div class="derecha">
-                    <img class="boton-darkmode"src="build/img/dark-mode.svg" alt="Boton dark mode">
-                    <div class="navegacion">
-                        <a href="nosotros.html">Nosotros</a>
-                        <a href="anuncios.html">Anuncios</a>
-                        <a href="blog.html">Blog</a>
-                        <a href="contacto.html">Contacti</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
-        </div>
-    </header>
+<?php
+    require "includes/funciones.php";
+    incluirTemplate("header");
+?>
 
     <main class="contenedor seccion">
         <h2>Contacto</h2>
 
         <picture>
-            <source srcset="build/img/destacada3.webp" tyoe="image/webp">
-            <source srcset="build/img/destacada3.jpg" tyoe="image/jpeg">
-            <img src="build/img/destacada3.jpg" alt="Imagen destacada 3">
+            <source srcset="/build/img/destacada3.webp" tyoe="image/webp">
+            <source srcset="/build/img/destacada3.jpg" tyoe="image/jpeg">
+            <img src="/build/img/destacada3.jpg" alt="Imagen destacada 3">
         </picture>
 
         <h2>Llene el formulario de contacto</h2>
@@ -107,19 +73,6 @@
         </form>
     </main>
 
-    <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <div class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </div>
-        </div>
-        <p class="copyright">Todos los derechos reservados 2023 &copy;</p>
-    </footer>
-    
-
-    <script src="build/js/bundle.min.js"></script>
-</body>
-</html>
+<?php
+    incluirTemplate("footer");
+?>

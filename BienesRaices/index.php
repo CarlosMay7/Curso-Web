@@ -1,58 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes raices</title>
-
-    <link rel="preload" href="build/css/app.css" as="style">
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-
-    <header class="header inicio">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                <img src="build/img/logo.svg" alt="Logo">
-                </a>
-
-                <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="Icono menu responsive">
-                </div>
-                <div class="derecha">
-                    <img class="boton-darkmode"src="build/img/dark-mode.svg" alt="Boton dark mode">
-                    <div class="navegacion">
-                        <a href="nosotros.html">Nosotros</a>
-                        <a href="anuncios.html">Anuncios</a>
-                        <a href="blog.html">Blog</a>
-                        <a href="contacto.html">Contacti</a>
-                    </div>
-                </div>
-
-            </div>
-
-            <h1>Venta de Casas y Departamentos Exclusivos de Lujo</h1>
-        </div>
-    </header>
+<?php
+    require "includes/funciones.php";
+    incluirTemplate("header", $inicio = true);
+?>
 
     <main class="contenedor seccion">
         <h2>Más Sobre Nosotros</h2>
 
         <div class="iconos-nosotros">
             <div class="icono">
-                <img class="figura" loadign="lazy" src="build/img/icono1.svg" alt="Icono">
+                <img class="figura" loadign="lazy" src="/build/img/icono1.svg" alt="Icono">
                 <h3>Seguridad</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate iure fugiat ea veritatis laudantium. Obcaecati deserunt sapiente, sed itaque, aperiam quod mollitia, eligendi consectetur iusto animi inventore culpa! Aperiam, dolorum.</p>
             </div>
             <div class="icono">
-                <img class="figura" loadign="lazy" src="build/img/icono2.svg" alt="Icono">
+                <img class="figura" loadign="lazy" src="/build/img/icono2.svg" alt="Icono">
                 <h3>Precio</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate iure fugiat ea veritatis laudantium. Obcaecati deserunt sapiente, sed itaque, aperiam quod mollitia, eligendi consectetur iusto animi inventore culpa! Aperiam, dolorum.</p>
             </div>
             <div class="icono">
-                <img class="figura" loadign="lazy" src="build/img/icono3.svg" alt="Icono">
+                <img class="figura" loadign="lazy" src="/build/img/icono3.svg" alt="Icono">
                 <h3>A Tiempo</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate iure fugiat ea veritatis laudantium. Obcaecati deserunt sapiente, sed itaque, aperiam quod mollitia, eligendi consectetur iusto animi inventore culpa! Aperiam, dolorum.</p>
             </div>
@@ -65,9 +31,9 @@
         <div class="contenedor-auncios">
             <div class="anuncio">
                 <picture>
-                    <source srcset="build/img/anuncio1.webp" type="image/webp">
-                    <source srcset="build/img/anuncio1.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/anuncio1.jpg" alt="anuncio">
+                    <source srcset="/build/img/anuncio1.webp" type="image/webp">
+                    <source srcset="/build/img/anuncio1.jpg" type="image/jpeg">
+                    <img loading="lazy" src="/build/img/anuncio1.jpg" alt="anuncio">
                 </picture>
 
                 <div class="contenido-anuncio">
@@ -77,27 +43,27 @@
 
                     <ul class="iconos-caracteristicas">
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_wc.svg" alt="WC">
+                            <img class="figura" loading="lazy" src="/build/img/icono_wc.svg" alt="WC">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_estacionamiento.svg" alt="Estacionamiento">
+                            <img class="figura" loading="lazy" src="/build/img/icono_estacionamiento.svg" alt="Estacionamiento">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_dormitorio.svg" alt="Recamaras">
+                            <img class="figura" loading="lazy" src="/build/img/icono_dormitorio.svg" alt="Recamaras">
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                    <a href="//anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
                 </div>
             </div>
 
             <div class="anuncio">
                 <picture>
-                    <source srcset="build/img/anuncio2.webp" type="image/webp">
-                    <source srcset="build/img/anuncio2.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/anuncio1.jpg" alt="anuncio">
+                    <source srcset="/build/img/anuncio2.webp" type="image/webp">
+                    <source srcset="/build/img/anuncio2.jpg" type="image/jpeg">
+                    <img loading="lazy" src="/build/img/anuncio1.jpg" alt="anuncio">
                 </picture>
 
                 <div class="contenido-anuncio">
@@ -107,27 +73,27 @@
 
                     <ul class="iconos-caracteristicas">
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_wc.svg" alt="WC">
+                            <img class="figura" loading="lazy" src="/build/img/icono_wc.svg" alt="WC">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_estacionamiento.svg" alt="Estacionamiento">
+                            <img class="figura" loading="lazy" src="/build/img/icono_estacionamiento.svg" alt="Estacionamiento">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_dormitorio.svg" alt="Recamaras">
+                            <img class="figura" loading="lazy" src="/build/img/icono_dormitorio.svg" alt="Recamaras">
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                    <a href="/anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
                 </div>
             </div>
 
             <div class="anuncio">
                 <picture>
-                    <source srcset="build/img/anuncio3.webp" type="image/webp">
-                    <source srcset="build/img/anuncio3.jpg" type="image/jpeg">
-                    <img loading="lazy" src="build/img/anuncio1.jpg" alt="anuncio">
+                    <source srcset="/build/img/anuncio3.webp" type="image/webp">
+                    <source srcset="/build/img/anuncio3.jpg" type="image/jpeg">
+                    <img loading="lazy" src="/build/img/anuncio1.jpg" alt="anuncio">
                 </picture>
 
                 <div class="contenido-anuncio">
@@ -137,19 +103,19 @@
 
                     <ul class="iconos-caracteristicas">
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_wc.svg" alt="WC">
+                            <img class="figura" loading="lazy" src="/build/img/icono_wc.svg" alt="WC">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_estacionamiento.svg" alt="Estacionamiento">
+                            <img class="figura" loading="lazy" src="/build/img/icono_estacionamiento.svg" alt="Estacionamiento">
                             <p>3</p>
                         </li>
                         <li>
-                            <img class="figura" loading="lazy" src="build/img/icono_dormitorio.svg" alt="Recamaras">
+                            <img class="figura" loading="lazy" src="/build/img/icono_dormitorio.svg" alt="Recamaras">
                             <p>3</p>
                         </li>
                     </ul>
-                    <a href="anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
+                    <a href="/anuncio.html" class="boton-amarillo-block">Ver Propiedad</a>
                 </div>
             </div>
         </div>
@@ -172,9 +138,9 @@
             <article class="entrada-blog">
                 <div class="imagen">
                     <picture>
-                        <source srcset="build/img/blog1.webp" type="image/webp">
-                        <source srcset="build/img/blog1.jpg" type="image/jpeg">
-                        <img loading="lazy" src="build/img/blog1.jpg" alt="Texto entrada blog">
+                        <source srcset="/build/img/blog1.webp" type="image/webp">
+                        <source srcset="/build/img/blog1.jpg" type="image/jpeg">
+                        <img loading="lazy" src="/build/img/blog1.jpg" alt="Texto entrada blog">
                     </picture>
                 </div>
 
@@ -191,9 +157,9 @@
             <article class="entrada-blog">
                 <div class="imagen">
                     <picture>
-                        <source srcset="build/img/blog2.webp" type="image/webp">
-                        <source srcset="build/img/blog2.jpg" type="image/jpeg">
-                        <img loading="lazy" src="build/img/blog2 .jpg" alt="Texto entrada blog">
+                        <source srcset="/build/img/blog2.webp" type="image/webp">
+                        <source srcset="/build/img/blog2.jpg" type="image/jpeg">
+                        <img loading="lazy" src="/build/img/blog2 .jpg" alt="Texto entrada blog">
                     </picture>
                 </div>
 
@@ -220,19 +186,6 @@
         </section>
     </div>
 
-    <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <div class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </div>
-        </div>
-        <p class="copyright">Todos los derechos reservados 2023 &copy;</p>
-    </footer>
-    
-
-    <script src="build/js/bundle.min.js"></script>
-</body>
-</html>
+<?php
+    incluirTemplate("footer");
+?>
