@@ -36,7 +36,7 @@ CREATE TABLE `propiedades` (
   PRIMARY KEY (`id`),
   KEY `fk_propiedades_vendedores1_idx` (`vendedores_id`),
   CONSTRAINT `fk_propiedades_vendedores1` FOREIGN KEY (`vendedores_id`) REFERENCES `vendedores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `propiedades` (
 
 LOCK TABLES `propiedades` WRITE;
 /*!40000 ALTER TABLE `propiedades` DISABLE KEYS */;
-INSERT INTO `propiedades` VALUES (6,'Hermosa casa en la ciudad',784512.00,NULL,'Casa en la mejor zona de la ciudad Casa en la mejor zona de la ciudad Casa en la mejor zona de la ciudad',2,3,'1','2023-05-10',2),(7,'Extravagante casa en la playa',7894652.00,NULL,'Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes',2,3,'1','2023-05-10',1),(25,'Lujosa casa en el bosque',192847.00,'5e2e0251445243ffcbff979b03e68d3c.jpg','Lujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosque',2,3,'5','2023-05-10',2),(26,'Lujosa casa en el bosque2',192847.00,'98fbd982f88a3aaf5bb76a4606fcd41e.jpg','Lujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosque',2,3,'5','2023-05-10',2);
+INSERT INTO `propiedades` VALUES (6,'Hermosa casa en la ciudad UPDATE2',7845839.00,'e76fcc15da6fea6cd5c51b09d704cbc3.jpg','Contenido de descripción actualizadoContenido de descripción actualizadoContenido de descripción actualizadoContenido de descripción actualizadoContenido de descripción actualizadoContenido de descripción actualizadoContenido de descripción actualizado',4,5,'2','2023-05-10',2),(7,'Extravagante casa en la playa',7894652.00,'642212961aa53d61be075f490a87a12e.jpg','Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes',2,3,'1','2023-05-10',1),(26,'Lujosa casa en el bosque2',192847.00,'98fbd982f88a3aaf5bb76a4606fcd41e.jpg','Lujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosqueLujosa casa en el bosque',2,3,'5','2023-05-10',2),(32,'Cuarta propiedad',99200.00,'aa80dff978ebe7e94d53e5e4f4c2e356.jpg',' Casa  Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa Casa',7,1,'2','2023-05-12',2),(33,'Otra propiedad',100000.00,'52aba721e5e97a238a1a17c9991c73a1.jpg','Casa linda Casa lindaCasa lindaCasa lindaCasa lindaCasa lindaCasa linda',4,4,'3','2023-05-12',1),(34,'Una más',70000000.00,'38b44a2aeb5d2baf8d20d562a36879c6.jpg','Para llegar a 6 propiedades Para llegar a 6 propiedadesPara llegar a 6 propiedades',1,2,'3','2023-05-12',2);
 /*!40000 ALTER TABLE `propiedades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-10  1:08:58
+-- Dump completed on 2023-05-12  2:07:38

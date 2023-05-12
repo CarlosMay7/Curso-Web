@@ -76,7 +76,7 @@
 
         $medida = 1000 * 1000;
 
-        if ($imagen["size"] > $medida || $imagen["error"]){
+        if ($imagen["size"] > $medida){
             $errores[] = "la imagen es muy pesada";
         }
     
@@ -154,7 +154,7 @@
                 <input type="file" id="imagen" accept="image/jpeg, image/png" name="imagen" > <!--El accept es para restringir el tipo de archivo a enviar-->
 
                 <label for="descripcion">Descripcion</label>
-                <textarea id="descripcion" name="descripcion" value="<?php echo $descripcion; ?>"></textarea>
+                <textarea id="descripcion" name="descripcion"><?php echo $descripcion; ?></textarea>
             </fieldset>
 
             <fieldset>
