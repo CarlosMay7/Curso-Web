@@ -1,4 +1,10 @@
 <?php
+    require "../includes/funciones.php";
+
+    $auth = autenticado();
+    if(!$auth){
+        header ("Location: /");
+    }
 
     //Importar conexion
     require "../includes/config/database.php";
@@ -38,7 +44,6 @@
         }
     }
     //Incluir template
-    require "../includes/funciones.php";
     incluirTemplate("header");
 ?>
 
