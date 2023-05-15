@@ -1,0 +1,17 @@
+{
+    "name": "may_7/bienes-raices",
+    "description": "Creando un proyecto con POO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Carlos May",
+            "email": "carlosmay220@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": { 
+        "psr-4": {
+            "App\\": "./classes"
+        }
+    }
+}

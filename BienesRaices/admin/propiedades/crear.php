@@ -1,14 +1,14 @@
 <?php
 
-    require "../../includes/funciones.php";
+    require "../../includes/app.php";
 
-    $auth = autenticado();
-    if(!$auth){
-        header ("Location: /");
-    }
+    use App\Propiedad;
+
+    $propiedad = new Propiedad;
+
+    autenticado();
+
     //Base de datos
-    require "../../includes/config/database.php";
-
     $db = conectarDB();
 
     //Consultar base de datos
