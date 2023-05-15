@@ -1,11 +1,9 @@
 <?php
-    require "../../includes/funciones.php";
+    require "../../includes/app.php";
 
-    $auth = autenticado();
-    if(!$auth){
-        header ("Location: /");
-    }
-
+    //Revisa el login
+    autenticado();
+    
     //Validar url con id
     $id = $_GET["id"];
 

@@ -6,6 +6,7 @@
 
     $propiedad = new Propiedad;
 
+    //Revisa el login
     autenticado();
 
     //Base de datos
