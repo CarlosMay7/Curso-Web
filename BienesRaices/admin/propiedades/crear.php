@@ -31,6 +31,12 @@
     //Ejecuta despues de que el usuario envia el formulario
     if($_SERVER["REQUEST_METHOD"]==="POST") {
 
+        $propiedad = new Propiedad($_POST);
+
+        $propiedad->guardar();
+
+        debug($propiedad);
+
         //Sanitizar entradas
         //Es como tomar solo lo que necesitamos para evitar fallos o incidencias en la bd
 
@@ -105,7 +111,6 @@
             move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . "/" . $nombreImagen);
 
             //Insertar en base de datos
-            $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creacion', '$vendedores_id' );";
             $ok = mysqli_query($db, $query);
 
             if($ok){
