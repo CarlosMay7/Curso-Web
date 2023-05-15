@@ -1,11 +1,10 @@
 <?php
-    require "../includes/funciones.php";
+    require "../includes/app.php";
 
     //Revisa el login
     autenticado();
 
     //Importar conexion
-    require "../includes/config/database.php";
     $db = conectarDB();    
     
     //Hacer el query
