@@ -6,12 +6,9 @@
     if(!$id){
         header("Location: /");
     }
-    require "includes/funciones.php";
-    incluirTemplate("header");
+    require "includes/app.php";
 
     //Importar conexion BD
-
-    require "includes/config/database.php";
 
     $db = conectarDB();
 
@@ -23,6 +20,8 @@
         header("Location: /");
     }
     $propiedad = mysqli_fetch_assoc($resultado);
+    incluirTemplate("header");
+
 ?>
 
     <main class="contenedor seccion contenido-centrado">

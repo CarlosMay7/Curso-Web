@@ -1,5 +1,9 @@
 <?php
+    require "../../includes/app.php";
 
+    //Revisa el login
+    autenticado();
+    
     //Validar url con id
     $id = $_GET["id"];
 
@@ -9,12 +13,10 @@
         header("Location :/admin");
     }
     //Base de datos
-    require "../../includes/config/database.php";
-
     $db = conectarDB();
 
     //Obtener datos propiedad
-    $queryPropiedades = "SELECT * FROM propiedades where id=$id";
+    $queryPropiedades = "SELECT * FROM propiedades WHERE id=$id";
     $resultadoPropiedades = mysqli_query($db, $queryPropiedades);
 
     $propiedad = mysqli_fetch_assoc($resultadoPropiedades);
@@ -133,7 +135,6 @@
         }
     }
 
-    require "../../includes/funciones.php";
     incluirTemplate("header");
 ?>
 

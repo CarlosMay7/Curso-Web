@@ -1,8 +1,5 @@
 <?php
     //Importar conexion BD
-
-    require "includes/config/database.php";
-
     $db = conectarDB();
 
     //Consultar

@@ -1,7 +1,10 @@
 <?php
+    require "../includes/app.php";
+
+    //Revisa el login
+    autenticado();
 
     //Importar conexion
-    require "../includes/config/database.php";
     $db = conectarDB();    
     
     //Hacer el query
@@ -38,7 +41,6 @@
         }
     }
     //Incluir template
-    require "../includes/funciones.php";
     incluirTemplate("header");
 ?>
 
