@@ -18,21 +18,10 @@
 
         if($id){
 
-            //Elimina el archivo
-            $query = "SELECT imagen FROM propiedades WHERE id=$id";
-            $resultado = mysqli_query($db, $query);
-            $propiedad = mysqli_fetch_assoc($resultado);
+            $propiedad = Propiedad::find($id);
 
-            unlink("../imagenes/" . $propiedad["imagen"]);
+            $propiedad ->eliminar();
 
-            //Elimina la propiedad
-            $query = "DELETE FROM propiedades WHERE id= $id";
-
-            $resultado = mysqli_query($db, $query);
-
-            if($resultado){
-                header("LOCATION: /admin?resultado=3");
-            }
         }
     }
     //Incluir template

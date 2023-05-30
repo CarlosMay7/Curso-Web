@@ -23,7 +23,7 @@ class Propiedad {
     public $vendedores_id;
 
     public function __construct($args = []){
-        $this->id = $args["id"] ?? "";        
+        $this->id = $args["id"] ?? null;        
         $this->titulo = $args["titulo"] ?? "";        
         $this->precio = $args["precio"] ?? "";        
         $this->imagen = $args["imagen"] ?? "";        
@@ -42,6 +42,16 @@ class Propiedad {
     }
 
     public function guardar(){
+        if (!is_null($this->id)){
+            //Revisa si hay un id para actualizar 
+            $this->actualizar();
+        } else {
+            //Si no hay, entonces crea
+            $this->crear();
+        }
+    }
+
+    public function crear(){
 
         //Sanitizar la entrada de datos
         $atributos = $this->sanitizarDatos(); 
@@ -62,9 +72,44 @@ class Propiedad {
 
         $query .= " ');";
 
-        $resultado = self::$db->query($query);
+        $ok = self::$db->query($query);
 
-        return $resultado;
+        if($ok){
+            //Redireccionar al usuario para que no sigan insertanto la misma propiedad
+            header("Location: /admin?resultado=1 & ok = ok"); //Lleva al usuario a la direccion colocada, además que se tiene el query string donde se crean variables y se asignan valores que pueden ser leidos de la url
+        }     }
+
+    public function actualizar(){
+        $atributos = $this->sanitizarDatos(); 
+
+        $valores = [];
+
+        foreach($atributos as $key => $value){
+            $valores[] = "$key='$value'";
+        }
+            
+        $query = "UPDATE propiedades SET ";
+        $query .= join(", ",$valores); 
+        $query .= " WHERE id= '" . self::$db->escape_string( $this->id) ."' ";
+        $query .= " LIMIT 1 ";
+
+        $ok = self::$db->query($query);
+
+        if($ok){
+            //Redireccionar al usuario para que no sigan insertanto la misma propiedad
+            header("location: /admin?resultado=2 & ok = ok"); //Lleva al usuario a la direccion colocada, además que se tiene el query string donde se crean variables y se asignan valores que pueden ser leidos de la url
+        } 
+    }
+
+    public function eliminar(){
+        $query = "DELETE FROM propiedades WHERE id= " . self::$db->escape_string($this->id) . " LIMIT 1";
+        
+        $ok = self::$db->query($query);
+
+        if($ok){
+            $this->borrarImagen();
+            header("LOCATION: /admin?resultado=3");
+        }
     }
 
     //Identifica y une los atributos de db 
@@ -79,8 +124,21 @@ class Propiedad {
     }
 
     public function setImagen ($image){
+        //Eliminar si hay una imagen previa
+        if ( !is_null( $this->id)){
+            $this->borrarImagen();
+        }
         if ($image){
             $this->imagen = $image;
+        }
+    }
+
+    public function borrarImagen(){
+
+        //Comprobando si existe el archivo
+        $existe = file_exists(CARPETA_IMAGENES . $this->imagen);
+        if ($existe){
+            unlink(CARPETA_IMAGENES . $this->imagen);
         }
     }
 
@@ -140,6 +198,15 @@ class Propiedad {
         return $resultado;
     }
 
+    //Busca propiedad por id
+    public static function find($id){
+        $query = "SELECT * FROM propiedades WHERE id=$id";
+
+        $resultado = self::consultarSql($query);
+
+        return array_shift($resultado);
+    }
+
     public static function consultarSql($query){
         //Consultar la base de datos
         $resultado = self::$db->query($query);
@@ -165,5 +232,15 @@ class Propiedad {
         }
 
         return $objeto;
+    }
+
+    //Sincronizar los datos ingresados con la memoria
+
+    public function sincronizar ($args = []){
+        foreach($args as $key =>$value){
+            if(property_exists($this, $key) && !is_null($value)){
+                $this->$key = $value;
+            }
+        }
     }
 }

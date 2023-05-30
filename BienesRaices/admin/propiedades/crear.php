@@ -27,21 +27,22 @@
     if($_SERVER["REQUEST_METHOD"]==="POST") {
 
         //Crea una instancia de la propiedad
-        $propiedad = new Propiedad($_POST);
+        $propiedad = new Propiedad($_POST["propiedad"]);
 
         //Crear nombre unico de imagen
         $nombreImagen = md5( uniqid( rand(), true)) . ".jpg"; //Generar nombres aleatorios dificiles de repetir
 
         //Set imagen
         //Resize a la imagen con Intervention
-        if ($_FILES["imagen"]["tmp_name"]) {
-            $image = Image::make($_FILES["imagen"]["tmp_name"]) -> fit(800,600);
+        if ($_FILES["propiedad"]["tmp_name"]["imagen"]) {
+            $image = Image::make($_FILES["propiedad"]["tmp_name"]["imagen"]) -> fit(800,600);
             //Asigna la imagen como atributo de la propiedad
             $propiedad->setImagen($nombreImagen);  
         }
 
-
         $errores = $propiedad->validar();
+
+
         //Sanitizar entradas con mysqli
         //Es como tomar solo lo que necesitamos para evitar fallos o incidencias en la bd
 
@@ -60,12 +61,8 @@
             $image->save(CARPETA_IMAGENES . $nombreImagen); //Se le ingresa el path a donde guardar la imagen
 
             //Guarda en bd
-            $ok = $propiedad->guardar();
+            $propiedad->guardar();
 
-            if($ok){
-                //Redireccionar al usuario para que no sigan insertanto la misma propiedad
-                header("Location: /admin?resultado=1 & ok = ok"); //Lleva al usuario a la direccion colocada, además que se tiene el query string donde se crean variables y se asignan valores que pueden ser leidos de la url
-            } 
         }
     }
 
