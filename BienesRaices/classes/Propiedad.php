@@ -8,6 +8,9 @@ class Propiedad {
     //Mapear los atributos del objeto
     protected static $columnasDb = ["id","titulo", "precio", "imagen", "descripcion", "habitaciones", "wc", "estacionamiento", "creado", "vendedores_id"];
 
+    //Errores
+
+    protected static $errores = [];
     public $id;
     public $titulo;
     public $precio;
@@ -20,7 +23,7 @@ class Propiedad {
     public $vendedores_id;
 
     public function __construct($args = []){
-        $this->id = $args["id"] ?? "";        
+        $this->id = $args["id"] ?? null;        
         $this->titulo = $args["titulo"] ?? "";        
         $this->precio = $args["precio"] ?? "";        
         $this->imagen = $args["imagen"] ?? "";        
@@ -29,7 +32,7 @@ class Propiedad {
         $this->wc = $args["wc"] ?? "";        
         $this->estacionamiento = $args["estacionamiento"] ?? "";        
         $this->creado = date("Y/m/d");        
-        $this->vendedores_id = $args["vendedores_id"] ?? "";        
+        $this->vendedores_id = $args["vendedores_id"] ?? 1;        
     }
 
     //Definir la conexion a la DB
@@ -39,13 +42,74 @@ class Propiedad {
     }
 
     public function guardar(){
+        if (!is_null($this->id)){
+            //Revisa si hay un id para actualizar 
+            $this->actualizar();
+        } else {
+            //Si no hay, entonces crea
+            $this->crear();
+        }
+    }
+
+    public function crear(){
 
         //Sanitizar la entrada de datos
         $atributos = $this->sanitizarDatos(); 
 
-        $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id) VALUES ('$this->titulo', '$this->precio', '$this->imagen', '$this->descripcion', '$this->habitaciones', '$this->wc', '$this->estacionamiento', '$this->creado', '$this->vendedores_id' );";
+        $arregloKeys = array_keys($atributos); //Hace un arreglo con el nombre de las propiedades en el arreglo
 
-        $resultado = self::$db->query($query);
+        $arregloValues = array_values($atributos); //Hace un arreglo con los valores de un arreglo
+
+        join(", ",$arregloKeys); //Une en un string el contenido del arreglo con el separador que se coloque
+
+        $query = "INSERT INTO propiedades (";
+
+        $query .= join (", ", $arregloKeys);
+
+        $query .= " ) VALUES (' ";
+
+        $query .= join ("', '", $arregloValues);
+
+        $query .= " ');";
+
+        $ok = self::$db->query($query);
+
+        if($ok){
+            //Redireccionar al usuario para que no sigan insertanto la misma propiedad
+            header("Location: /admin?resultado=1 & ok = ok"); //Lleva al usuario a la direccion colocada, además que se tiene el query string donde se crean variables y se asignan valores que pueden ser leidos de la url
+        }     }
+
+    public function actualizar(){
+        $atributos = $this->sanitizarDatos(); 
+
+        $valores = [];
+
+        foreach($atributos as $key => $value){
+            $valores[] = "$key='$value'";
+        }
+            
+        $query = "UPDATE propiedades SET ";
+        $query .= join(", ",$valores); 
+        $query .= " WHERE id= '" . self::$db->escape_string( $this->id) ."' ";
+        $query .= " LIMIT 1 ";
+
+        $ok = self::$db->query($query);
+
+        if($ok){
+            //Redireccionar al usuario para que no sigan insertanto la misma propiedad
+            header("location: /admin?resultado=2 & ok = ok"); //Lleva al usuario a la direccion colocada, además que se tiene el query string donde se crean variables y se asignan valores que pueden ser leidos de la url
+        } 
+    }
+
+    public function eliminar(){
+        $query = "DELETE FROM propiedades WHERE id= " . self::$db->escape_string($this->id) . " LIMIT 1";
+        
+        $ok = self::$db->query($query);
+
+        if($ok){
+            $this->borrarImagen();
+            header("LOCATION: /admin?resultado=3");
+        }
     }
 
     //Identifica y une los atributos de db 
@@ -59,6 +123,25 @@ class Propiedad {
         return $atributos;
     }
 
+    public function setImagen ($image){
+        //Eliminar si hay una imagen previa
+        if ( !is_null( $this->id)){
+            $this->borrarImagen();
+        }
+        if ($image){
+            $this->imagen = $image;
+        }
+    }
+
+    public function borrarImagen(){
+
+        //Comprobando si existe el archivo
+        $existe = file_exists(CARPETA_IMAGENES . $this->imagen);
+        if ($existe){
+            unlink(CARPETA_IMAGENES . $this->imagen);
+        }
+    }
+
     public function sanitizarDatos(){
         $atributos = $this->atributos();
         $sanitizado = [];
@@ -68,5 +151,96 @@ class Propiedad {
         }
 
         return $sanitizado;
+    }
+
+    //Validación
+
+    public static function getErrores(){
+        return self::$errores;
+    }
+
+    public function validar(){
+        if(!$this->titulo){
+            self::$errores[] = "Debe agregar un título";
+        }
+        if(!$this->precio){
+            self::$errores[] = "Debe agregar un precio";
+        }
+        if(strlen($this->descripcion)<50){
+            self::$errores[] = "Debe agregar una descripción de al menos 50 caracteres";
+        }
+        if(!$this->habitaciones){
+            self::$errores[] = "Debe agregar la cantidad de habitaciones";
+        }
+        if(!$this->wc){
+            self::$errores[] = "Debe agregar la cantidad de baños";
+        }
+        if(!$this->estacionamiento){
+            self::$errores[] = "Debe agregar la cantidad de espacio de estacionamiento";
+        }
+        if(!$this->vendedores_id){
+            self::$errores[] = "Debe seleccionar un vendedor";
+        }
+
+         if(!$this->imagen){
+            self::$errores[] ="Es necesario tener una imagen de la propiedad";
+         }
+
+        return self::$errores;
+    }
+
+    //Listar propiedades 
+    public static function all(){
+        $query = "SELECT * FROM propiedades";
+
+        $resultado = self::consultarSql($query);
+
+        return $resultado;
+    }
+
+    //Busca propiedad por id
+    public static function find($id){
+        $query = "SELECT * FROM propiedades WHERE id=$id";
+
+        $resultado = self::consultarSql($query);
+
+        return array_shift($resultado);
+    }
+
+    public static function consultarSql($query){
+        //Consultar la base de datos
+        $resultado = self::$db->query($query);
+        //Iterar en los resultados
+        $array = [];
+
+        while($registro = $resultado->fetch_assoc()){
+            $array[] = self::crearObjeto($registro);
+        }
+        //Liberar la memoria
+        $resultado->free();
+        //Retornar resultados
+        return $array;
+    }
+
+    protected static function crearObjeto($registro){
+        $objeto = new self; //Crea un nuevo objeto de la clase padre
+
+        foreach ($registro as $key => $value){
+            if (property_exists( $objeto, $key)){
+                $objeto->$key = $value;
+            }
+        }
+
+        return $objeto;
+    }
+
+    //Sincronizar los datos ingresados con la memoria
+
+    public function sincronizar ($args = []){
+        foreach($args as $key =>$value){
+            if(property_exists($this, $key) && !is_null($value)){
+                $this->$key = $value;
+            }
+        }
     }
 }

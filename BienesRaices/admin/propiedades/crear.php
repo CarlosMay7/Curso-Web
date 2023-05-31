@@ -3,6 +3,7 @@
     require "../../includes/app.php";
 
     use App\Propiedad;
+    use Intervention\Image\ImageManagerStatic as Image;
 
     $propiedad = new Propiedad;
 
@@ -12,112 +13,56 @@
     //Base de datos
     $db = conectarDB();
 
+    $propiedad = new Propiedad;
+
     //Consultar base de datos
     $query = "SELECT * FROM vendedores";
     $resultado = mysqli_query($db, $query);
 
     //Arreglo mensajes de error
-    $errores = [];
-
-    $titulo = "";
-    $precio = "";
-    $descripcion = "";
-    $habitaciones = "";
-    $wc = "";
-    $estacionamiento = "";
-    $vendedores_id = "";
-
+    $errores = Propiedad::getErrores();
 
 
     //Ejecuta despues de que el usuario envia el formulario
     if($_SERVER["REQUEST_METHOD"]==="POST") {
 
-        $propiedad = new Propiedad($_POST);
+        //Crea una instancia de la propiedad
+        $propiedad = new Propiedad($_POST["propiedad"]);
 
-        $propiedad->guardar();
+        //Crear nombre unico de imagen
+        $nombreImagen = md5( uniqid( rand(), true)) . ".jpg"; //Generar nombres aleatorios dificiles de repetir
 
-        debug($propiedad);
+        //Set imagen
+        //Resize a la imagen con Intervention
+        if ($_FILES["propiedad"]["tmp_name"]["imagen"]) {
+            $image = Image::make($_FILES["propiedad"]["tmp_name"]["imagen"]) -> fit(800,600);
+            //Asigna la imagen como atributo de la propiedad
+            $propiedad->setImagen($nombreImagen);  
+        }
 
-        //Sanitizar entradas
+        $errores = $propiedad->validar();
+
+
+        //Sanitizar entradas con mysqli
         //Es como tomar solo lo que necesitamos para evitar fallos o incidencias en la bd
 
         //filter_var(variable_limpiar, tipo_filtro);
         
         //Validar entradas, devuelve el valor si es valido, falso sino
         //filter_var(variable_validar, tipo_filtro);
-
-
-        //Validan que sean los tipos de datos solicitados
-        $titulo =  mysqli_real_escape_string($db,$_POST["titulo"]);
-        $precio = mysqli_real_escape_string($db,$_POST["precio"]);
-        $descripcion = mysqli_real_escape_string($db,$_POST["descripcion"]);
-        $habitaciones = mysqli_real_escape_string($db,$_POST["habitaciones"]);
-        $wc = mysqli_real_escape_string($db,$_POST["wc"]);
-        $estacionamiento = mysqli_real_escape_string($db,$_POST["estacionamiento"]);
-        $vendedores_id = mysqli_real_escape_string($db,$_POST["vendedores_id"]);
-        $creacion = date("Y/m/d");
-
-        //Asignar variable a una imagen
-        $imagen = $_FILES["imagen"];
-
-        if(!$titulo){
-            $errores[] = "Debe agregar un título";
-        }
-        if(!$precio){
-            $errores[] = "Debe agregar un precio";
-        }
-        if(strlen($descripcion)<50){
-            $errores[] = "Debe agregar una descripción de al menos 50 caracteres";
-        }
-        if(!$habitaciones){
-            $errores[] = "Debe agregar la cantidad de habitaciones";
-        }
-        if(!$wc){
-            $errores[] = "Debe agregar la cantidad de baños";
-        }
-        if(!$estacionamiento){
-            $errores[] = "Debe agregar la cantidad de espacio de estacionamiento";
-        }
-        if(!$vendedores_id){
-            $errores[] = "Debe seleccionar un vendedor";
-        }
-
-        if(!$imagen["name"] || $imagen["error"]){
-            $errores[] ="Es necesario tener una imagen de la propiedad";
-        }
-
-        //Validar tamaño de la imagen (1mb)
-
-        $medida = 1000 * 1000;
-
-        if ($imagen["size"] > $medida){
-            $errores[] = "la imagen es muy pesada";
-        }
     
         //Revisar que no haya errores
         if (empty($errores)){
-            //Subir archivos
 
-            //Crear carpeta
-            $carpetaImagenes = "../../imagenes";
-            if(!is_dir($carpetaImagenes)) {
-                echo mkdir($carpetaImagenes);
+            if(!is_dir(CARPETA_IMAGENES)) {
+                mkdir(CARPETA_IMAGENES);
             }
+            //Guardar la imagen
+            $image->save(CARPETA_IMAGENES . $nombreImagen); //Se le ingresa el path a donde guardar la imagen
 
-            //Crear nombre unico de imagen
+            //Guarda en bd
+            $propiedad->guardar();
 
-            $nombreImagen = md5( uniqid( rand(), true)) . ".jpg"; //Generar nombres aleatorios dificiles de repetir
-
-            //Subir imagen
-            move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . "/" . $nombreImagen);
-
-            //Insertar en base de datos
-            $ok = mysqli_query($db, $query);
-
-            if($ok){
-                //Redireccionar al usuario para que no sigan insertanto la misma propiedad
-                header("location: /admin?resultado=1 & ok = ok"); //Lleva al usuario a la direccion colocada, además que se tiene el query string donde se crean variables y se asignan valores que pueden ser leidos de la url
-            } 
         }
     }
 
@@ -153,49 +98,9 @@
         aunque se puede crear uno nuevo solo para esta parte-->
         <!--La parte de enctype es para que pueda aceptar archivos como imagenes-->
         <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
-            <fieldset>
-                <legend>Información General</legend>
-
-                <label for="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo" placeholder="Propiedad" value="<?php echo $titulo; ?>"> <!--El value es para que se guarde el valor una vez se ingrese aunque hayan fallos o no se ingresen los demas inputs-->
-
-                <label for="precio">Precio</label>
-                <input type="number" id="precio" name="precio" placeholder="Precio" value="<?php echo $precio; ?>">
-
-                <label for="imagen">Imagen</label>
-                <input type="file" id="imagen" accept="image/jpeg, image/png" name="imagen" > <!--El accept es para restringir el tipo de archivo a enviar-->
-
-                <label for="descripcion">Descripcion</label>
-                <textarea id="descripcion" name="descripcion"><?php echo $descripcion; ?></textarea>
-            </fieldset>
-
-            <fieldset>
-                <legend>Información Propiedad</legend>
-
-                <label for="habitaciones">Habitaciones:</label>
-                <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 7" min="1" value="<?php echo $habitaciones; ?>">
-
-                <label for="wc">Baños:</label>
-                <input type="number" id="wc" name="wc" placeholder="Ej: 7" min="1" value="<?php echo $wc; ?>">
-
-                <label for="estacionamiento">Estacionamiento:</label>
-                <input type="number" id="estacionamiento" name="estacionamiento" placeholder="Ej: 7" min="1" value="<?php echo $estacionamiento; ?>">
-            </fieldset>
-
-            <fieldset>
-                <legend>Vendedor</legend>
-                <select name="vendedores_id">
-                    <option value="" disabled selected>Seleccione un vendedor</option>
-                    <?php //Agregando vendedores desde la bd
-                    while ($vendedor = mysqli_fetch_assoc($resultado)): ?>
-                    
-                    <!--Itera sobre la base de datos y revisa que si el atributo seleccionado es igual al que está en la base de datos y si es asi lo conserva
-                    y agrega el atributo de selected en html-->
-                    <option <?php echo $vendedores_id === $vendedor["id"] ? "selected" : ""; ?> value="<?php echo $vendedor["id"]; ?>"><?php echo $vendedor["nombre"] . " " . $vendedor["apellido"]; ?></option>
-
-                    <?php endwhile ?>
-                </select>
-            </fieldset>
+            <?php
+                include "../../includes/templates/formulario_propiedades.php";
+            ?>
             <input type="submit" value="Crear Popiedad" class="boton boton-verde">
         </form>
     </main>
