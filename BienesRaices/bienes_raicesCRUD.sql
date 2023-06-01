@@ -36,7 +36,7 @@ CREATE TABLE `propiedades` (
   PRIMARY KEY (`id`),
   KEY `fk_propiedades_vendedores1_idx` (`vendedores_id`),
   CONSTRAINT `fk_propiedades_vendedores1` FOREIGN KEY (`vendedores_id`) REFERENCES `vendedores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `propiedades` (
 
 LOCK TABLES `propiedades` WRITE;
 /*!40000 ALTER TABLE `propiedades` DISABLE KEYS */;
-INSERT INTO `propiedades` VALUES (7,'Extravagante casa en la playa',7894652.00,'642212961aa53d61be075f490a87a12e.jpg','Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes',2,3,'1','2023-05-10',1),(34,'Una más',70000000.00,'38b44a2aeb5d2baf8d20d562a36879c6.jpg','Para llegar a 6 propiedades Para llegar a 6 propiedadesPara llegar a 6 propiedades',1,2,'3','2023-05-12',2),(39,' Nueva casa bonita',784651.00,'849b96f2f8d3f72846cd07526bbe9d8e.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',2,3,'4','2023-05-16',1),(40,' Otra casa',4657899.00,'6ee1dbff90804af833e7d74e53b7fcf7.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',8,9,'2','2023-05-16',2),(47,' Nueva casa otra',647890.00,'69836f84fdefc6d639990497294b0e39.jpg','casacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasa',6,3,'1','2023-05-29',1),(55,' Casa nueva nueva OFERTA',67845.00,'05926c40d1038a82a985ecd28175f0c1.jpg','propiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedad',5,5,'6','2023-05-30',1),(56,' Propiedad nueva',87451.00,'51e3d042bbffa624e2451d7acc045ea2.jpg','Prueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creadoPrueba creado',2,4,'5','2023-05-30',1);
+INSERT INTO `propiedades` VALUES (7,'Extravagante casa en la playa EN OFERTA',7894652.00,'91ba32f21088571cbd428e29d1f73702.jpg','Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes',2,3,'1','2023-05-10',1),(34,'Una más',70000000.00,'38b44a2aeb5d2baf8d20d562a36879c6.jpg','Para llegar a 6 propiedades Para llegar a 6 propiedadesPara llegar a 6 propiedades',1,2,'3','2023-05-12',2),(39,' Nueva casa bonita',784651.00,'849b96f2f8d3f72846cd07526bbe9d8e.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',2,3,'4','2023-05-16',1),(40,' Otra casa',4657899.00,'6ee1dbff90804af833e7d74e53b7fcf7.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',8,9,'2','2023-05-16',2),(47,' Nueva casa otra',647890.00,'69836f84fdefc6d639990497294b0e39.jpg','casacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasa',6,3,'1','2023-05-29',1),(55,' Casa nueva nueva OFERTA',67845.00,'05926c40d1038a82a985ecd28175f0c1.jpg','propiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedad',5,5,'6','2023-05-30',1);
 /*!40000 ALTER TABLE `propiedades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `vendedores` (
   `apellido` varchar(45) DEFAULT NULL,
   `telefono` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `vendedores` (
 
 LOCK TABLES `vendedores` WRITE;
 /*!40000 ALTER TABLE `vendedores` DISABLE KEYS */;
-INSERT INTO `vendedores` VALUES (1,'Carlos','May','9993240874'),(2,'Benito','Martínez','7884412154');
+INSERT INTO `vendedores` VALUES (1,'Carlos','May','9993240893'),(2,'Benito','Martínez','7884412154'),(5,' Andrea','González','9998451274');
 /*!40000 ALTER TABLE `vendedores` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-30  1:18:19
+-- Dump completed on 2023-05-31  2:36:49

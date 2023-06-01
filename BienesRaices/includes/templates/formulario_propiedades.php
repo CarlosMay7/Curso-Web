@@ -32,15 +32,10 @@
 
 <fieldset>
 <legend>Vendedor</legend>
-<!-- <select name="vendedores_id">
-    <option value="" disabled selected>Seleccione un vendedor</option> -->
-    <?php /* //Agregando vendedores desde la bd
-    while ($vendedor = mysqli_fetch_assoc($resultado)): */?>
-    
-    <!--Itera sobre la base de datos y revisa que si el atributo seleccionado es igual al que está en la base de datos y si es asi lo conserva
-    y agrega el atributo de selected en html-->
-    <!-- <option <?php echo $vendedores_id === $vendedor["id"] ? "selected" : ""; ?> value="<?php echo $propiedad->vendedor["id"]; ?>"><?php echo $propiedad->vendedor["nombre"] . " " . $propiedad->vendedor["apellido"]; ?></option> -->
-
-    <?php //endwhile ?>
-</select>
+    <select name="propiedad[vendedores_id]">
+        <option value="" disable selected>Seleccione un vendedor</option>
+        <?php foreach($vendedores as $vendedor): ?>
+            <option <?php echo $propiedad->vendedores_id === $vendedor->id ? 'selected' : ''; ?> value="<?php echo s($vendedor->id); ?>"> <?php echo s($vendedor->nombre) . " " . s($vendedor->apellido); ?></option>
+        <?php endforeach ?>
+    </select>
 </fieldset>

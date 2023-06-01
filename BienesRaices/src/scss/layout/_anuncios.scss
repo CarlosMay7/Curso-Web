@@ -1,5 +1,5 @@
 @include tablet {
-    .contenedor-auncios {
+    .contenedor-anuncios {
         @include grid(3, 2rem);
     }
 }
@@ -9,7 +9,7 @@
     border: 2px solid $gris;
     margin-bottom: 2rem;
 
-    .contenedor-auncios {
+    .contenedor-anuncios {
         padding: 2rem;
     }
 
