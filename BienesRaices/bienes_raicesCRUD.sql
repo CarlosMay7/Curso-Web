@@ -45,7 +45,7 @@ CREATE TABLE `propiedades` (
 
 LOCK TABLES `propiedades` WRITE;
 /*!40000 ALTER TABLE `propiedades` DISABLE KEYS */;
-INSERT INTO `propiedades` VALUES (7,'Extravagante casa en la playa EN OFERTA',7894652.00,'91ba32f21088571cbd428e29d1f73702.jpg','Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes',2,3,'1','2023-05-10',1),(34,'Una más',70000000.00,'38b44a2aeb5d2baf8d20d562a36879c6.jpg','Para llegar a 6 propiedades Para llegar a 6 propiedadesPara llegar a 6 propiedades',1,2,'3','2023-05-12',2),(39,' Nueva casa bonita',784651.00,'849b96f2f8d3f72846cd07526bbe9d8e.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',2,3,'4','2023-05-16',1),(40,' Otra casa',4657899.00,'6ee1dbff90804af833e7d74e53b7fcf7.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',8,9,'2','2023-05-16',2),(47,' Nueva casa otra',647890.00,'69836f84fdefc6d639990497294b0e39.jpg','casacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasacasa',6,3,'1','2023-05-29',1),(55,' Casa nueva nueva OFERTA',67845.00,'05926c40d1038a82a985ecd28175f0c1.jpg','propiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedad',5,5,'6','2023-05-30',1);
+INSERT INTO `propiedades` VALUES (7,'Extravagante casa en la playa EN OFERTA',7894652.00,'5922917a3dcda2cdbb6b49f61318398a.jpg','Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes Hermosa casa en la playa con acabados extravagantes',2,3,'1','2023-05-10',1),(39,' Nueva casa bonita',784651.00,'187e53a85249c8ef47f635fcfaeb71bf.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',2,3,'4','2023-05-16',1),(40,' Otra casa',4657899.00,'6ee1dbff90804af833e7d74e53b7fcf7.jpg','Mensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de pruevaMensaje de prueva',8,9,'2','2023-05-16',2),(55,' Casa nueva nueva OFERTA',67845.00,'f2ff1adc71bd933e2f8ad0d433f89aab.jpg','propiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedadpropiedad',5,5,'6','2023-05-30',1);
 /*!40000 ALTER TABLE `propiedades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-31  2:36:49
+-- Dump completed on 2023-05-31 20:20:27
