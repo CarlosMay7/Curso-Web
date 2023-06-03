@@ -16,8 +16,6 @@
     if(!$id){
         header("Location :/admin");
     }
-    //Base de datos
-    $db = conectarDB();
 
     //Obtener datos propiedad
     $propiedad = Propiedad::find($id);
