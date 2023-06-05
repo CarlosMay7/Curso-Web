@@ -1,0 +1,19 @@
+{
+    "name": "carlos-may/app-salon",
+    "description": "Proyecto MVC, SQL, Gulp...",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "Carlos May",
+            "email": "carlosmay220@gmail.com"
+        }
+    ],
+    "require": {}
+}
