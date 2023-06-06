@@ -43,11 +43,13 @@
                         <a href="/blog">Blog</a>
                         <a href="/contacto">Contacto</a>
 
-                        <?php if ($auth): ?>
+                        <?php if ($auth){ ?>
 
-                            <a href="/cerrarSesion">Cerrar Sesión</a>
+                            <a href="/logout">Cerrar Sesión</a>
                         
-                        <?php endif; ?>
+                        <?php } else { ?>
+                            <a href="/login">Login</a>
+                        <?php } ?>
                     </div>
                 </div>
 

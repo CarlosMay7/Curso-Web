@@ -4,7 +4,6 @@ namespace Controllers;
 
 use MVC\Router;
 use Model\Vendedor;
-use VARIANT;
 
 class VendedorController{
     public static function crear(Router $router){
