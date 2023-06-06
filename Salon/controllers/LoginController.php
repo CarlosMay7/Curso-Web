@@ -87,7 +87,7 @@ class LoginController {
         } else {
             //Modificar a confirmado
             $usuario->confirmado = "1";
-            $usuario->token = null;
+            $usuario->token = "";
             $usuario->guardar();
             Usuario::setAlerta("exito", "¡Cuenta Confirmada!");
         }
