@@ -113,7 +113,7 @@ CREATE TABLE `usuarios` (
   `confirmado` tinyint(1) DEFAULT NULL,
   `token` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Usuario','Prueba','correo@correo.com','1234567','9967845120',NULL,NULL,NULL),(3,' Carlos','May','correo2@correo.com','$2y$10$E0wNvZPneLlSvrpNh9.C7OwriKiWuBIbDaqhTHy7Nyv0B2E51msR6','9967845120',0,1,'');
+INSERT INTO `usuarios` VALUES (1,' Admin','May','admin@correo.com','$2y$10$yOPm9cpKKIV.eSW1I4AwOe1HJgbrJywQE1zhg1qfljsCnLLVL7wUa','9998745120',1,1,''),(11,' Carlos','May','correo3@correo.com','$2y$10$wetiPqvfreMtlk3p7uCtp.I0UlVJWVZCcVpjUim71gGkz5q2V2yyy','9996457812',0,1,'');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -135,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-06  1:58:33
+-- Dump completed on 2023-06-07  1:32:50
