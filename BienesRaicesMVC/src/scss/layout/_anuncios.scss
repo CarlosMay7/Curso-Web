@@ -11,6 +11,11 @@
 
     .contenido-anuncio {
         padding: 2rem;
+
+        p {
+            word-wrap: break-word;
+            word-break: break-all;
+        }
     }
 
     h3, p {
