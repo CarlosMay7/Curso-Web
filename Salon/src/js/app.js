@@ -3,6 +3,7 @@ const pasoInicial = 1;
 const pasoFinal = 3;
 
 const cita = {
+    id: "",
     nombre: "",
     fecha: "",
     hora: "",
@@ -22,6 +23,7 @@ function iniciarApp(){
 
     consultaAPI(); //Consulta la API en el backend PHP
 
+    idCliente();
     nombreCliente();
     seleccionarFecha();
     seleccionarHora();
@@ -160,6 +162,12 @@ function seleccionarServicio(servicio){
         divServicio.classList.add("seleccionado");
 
     }
+}
+
+function idCliente(){
+    const citaId = document.querySelector("#id").value;
+
+    cita.id = citaId;
 }
 
 function nombreCliente(){
@@ -303,6 +311,50 @@ function mostrarResumen(){
     resumen.appendChild(botonReservar);
 }
 
-function reservarCita(){
-    console.log("reservando cita");
+async function reservarCita(){
+
+    const {nombre, fecha, hora, servicios, id} = cita;
+
+    const servicioId = servicios.map(servicio => servicio.id);
+
+    const datos = new FormData();
+    datos.append("fecha", fecha);
+    datos.append("hora", hora);
+    datos.append("usuarioid", id);
+    datos.append("servicios", servicioId);
+
+    try {
+        //Peticion a la api
+        const url = "http://localhost:3000/api/citas";
+
+        const respuesta = await fetch(url, {
+            method: "POST",
+            body: datos
+        });
+
+        const resultado = await respuesta.json();
+        console.log(resultado);
+
+        if(resultado.resultado){
+            Swal.fire({
+                icon: 'success',
+                title: 'Cita Creada',
+                text: 'Tu cita fue creada correctamente',
+                button: "OK"
+            }).then( ()=> {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            })
+        }
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Hubo un error al generar la cita',
+          })
+    }
+
+
+    //console.log([...datos]); Ver el contenido del form data
 }

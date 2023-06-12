@@ -141,6 +141,8 @@ class ActiveRecord {
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
 
+        // return json_encode(["query" => $query]); //Se usa para debuguear, se puede checar con postman o en network-> form data en la consola web
+
         // Resultado de la consulta
         $resultado = self::$db->query($query);
         return [
