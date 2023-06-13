@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: appsalon_mvc
 -- ------------------------------------------------------
--- Server version	8.0.33
+-- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `citas` (
   PRIMARY KEY (`id`),
   KEY `usuarioid` (`usuarioid`),
   CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`usuarioid`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
+INSERT INTO `citas` VALUES (1,'2011-07-23','10:30:00',11),(6,'2023-06-23','10:30:00',11),(7,'2023-06-19','10:30:00',11),(8,'2023-06-29','10:59:00',11),(29,'2023-06-27','14:56:00',11),(30,'2023-06-20','15:56:00',11);
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +59,7 @@ CREATE TABLE `citasservicios` (
   KEY `servicioid` (`servicioid`),
   CONSTRAINT `citasservicios_ibfk_1` FOREIGN KEY (`citasid`) REFERENCES `citas` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `citasservicios_ibfk_2` FOREIGN KEY (`servicioid`) REFERENCES `servicios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +68,7 @@ CREATE TABLE `citasservicios` (
 
 LOCK TABLES `citasservicios` WRITE;
 /*!40000 ALTER TABLE `citasservicios` DISABLE KEYS */;
+INSERT INTO `citasservicios` VALUES (5,29,1),(6,29,2),(7,29,3),(8,30,1),(9,30,3),(10,30,2);
 /*!40000 ALTER TABLE `citasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,7 +81,7 @@ DROP TABLE IF EXISTS `servicios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `servicios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombre` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -104,14 +106,14 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `apellido` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombre` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `apellido` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `telefono` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `telefono` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL,
   `confirmado` tinyint(1) DEFAULT NULL,
-  `token` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `token` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -122,7 +124,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,' Admin','May','admin@correo.com','$2y$10$yOPm9cpKKIV.eSW1I4AwOe1HJgbrJywQE1zhg1qfljsCnLLVL7wUa','9998745120',1,1,''),(11,' Carlos','May','correo3@correo.com','$2y$10$wetiPqvfreMtlk3p7uCtp.I0UlVJWVZCcVpjUim71gGkz5q2V2yyy','9996457812',0,1,'');
+INSERT INTO `usuarios` VALUES (1,' Admin','May','admin@correo.com','$2y$10$yOPm9cpKKIV.eSW1I4AwOe1HJgbrJywQE1zhg1qfljsCnLLVL7wUa','9998745120',1,1,''),(11,'Carlos','May','correo3@correo.com','$2y$10$wetiPqvfreMtlk3p7uCtp.I0UlVJWVZCcVpjUim71gGkz5q2V2yyy','9996457812',0,1,'');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -135,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-07  1:32:50
+-- Dump completed on 2023-06-12  1:24:09
