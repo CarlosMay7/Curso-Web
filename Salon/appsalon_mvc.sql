@@ -30,7 +30,7 @@ CREATE TABLE `citas` (
   PRIMARY KEY (`id`),
   KEY `usuarioid` (`usuarioid`),
   CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`usuarioid`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
-INSERT INTO `citas` VALUES (1,'2011-07-23','10:30:00',11),(6,'2023-06-23','10:30:00',11),(7,'2023-06-19','10:30:00',11),(8,'2023-06-29','10:59:00',11),(29,'2023-06-27','14:56:00',11),(30,'2023-06-20','15:56:00',11);
+INSERT INTO `citas` VALUES (30,'2023-06-20','15:56:00',11),(31,'2023-06-30','15:53:00',11),(33,'2023-06-21','14:30:00',11);
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `citasservicios` (
   KEY `servicioid` (`servicioid`),
   CONSTRAINT `citasservicios_ibfk_1` FOREIGN KEY (`citasid`) REFERENCES `citas` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   CONSTRAINT `citasservicios_ibfk_2` FOREIGN KEY (`servicioid`) REFERENCES `servicios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `citasservicios` (
 
 LOCK TABLES `citasservicios` WRITE;
 /*!40000 ALTER TABLE `citasservicios` DISABLE KEYS */;
-INSERT INTO `citasservicios` VALUES (5,29,1),(6,29,2),(7,29,3),(8,30,1),(9,30,3),(10,30,2);
+INSERT INTO `citasservicios` VALUES (5,NULL,1),(6,NULL,2),(7,NULL,3),(8,30,1),(9,30,3),(10,30,2),(11,31,3),(12,31,1),(13,31,5),(14,31,6),(15,NULL,1),(16,NULL,3),(17,NULL,4),(18,NULL,5),(19,NULL,2),(20,33,1),(21,33,3),(22,33,5),(23,33,2),(24,33,4),(25,33,8);
 /*!40000 ALTER TABLE `citasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-12  1:24:09
+-- Dump completed on 2023-06-13  0:50:05
