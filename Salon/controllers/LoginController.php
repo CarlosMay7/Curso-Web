@@ -24,8 +24,6 @@ class LoginController {
                     //Checar password
                     if($usuario->comprobarPasswordVerificado($auth->password)){
                         //Autenticar
-                        session_start();
-
                         $_SESSION["id"] = $usuario->id;
                         $_SESSION["nombre"] = $usuario->nombre . " " . $usuario->apellido;
                         $_SESSION["email"] = $usuario->email;
@@ -55,7 +53,6 @@ class LoginController {
     }
 
     public static function logout(){
-        session_start();
 
         $_SESSION = [];
 
