@@ -4,11 +4,12 @@
 <?php include_once __DIR__ . "/../templates/barra.php"; ?>
 <div class="app">
 
-<nav class="tabs">
-    <button class="actual" type="button" data-paso="1">Servicios</button>
-    <button type="button" data-paso="2">información Cita</button>
-    <button type="button" data-paso="3">Resumen</button>
-</nav>
+    <nav class="tabs">
+        <button class="actual" type="button" data-paso="1">Servicios</button>
+        <button type="button" data-paso="2">información Cita</button>
+        <button type="button" data-paso="3">Resumen</button>
+    </nav>
+    
     <div id="paso-1" class="seccion">
         <h2>Servicios</h2>
         <p class="text-center">Elige tus servicios</p>
@@ -47,9 +48,9 @@
     </div>
 </div>
 
- <?php
+<?php
     $script = "
     <script src='//cdn.jsdelivr.net/npm/sweetalert2@10'></script>
     <script src='build/js/app.js'></script>
     ";
- ?>
+?>

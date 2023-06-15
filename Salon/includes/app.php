@@ -1,6 +1,6 @@
 <?php 
 require __DIR__ . '/../vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../"); //Los archivos .env deben estar en la raiz del proyecto
 $dotenv->safeLoad();
 
 require 'funciones.php';
