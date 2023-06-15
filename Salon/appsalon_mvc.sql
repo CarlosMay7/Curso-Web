@@ -68,7 +68,7 @@ CREATE TABLE `citasservicios` (
 
 LOCK TABLES `citasservicios` WRITE;
 /*!40000 ALTER TABLE `citasservicios` DISABLE KEYS */;
-INSERT INTO `citasservicios` VALUES (5,NULL,1),(6,NULL,2),(7,NULL,3),(8,30,1),(9,30,3),(10,30,2),(11,31,3),(12,31,1),(13,31,5),(14,31,6),(15,NULL,1),(16,NULL,3),(17,NULL,4),(18,NULL,5),(19,NULL,2),(20,33,1),(21,33,3),(22,33,5),(23,33,2),(24,33,4),(25,33,8);
+INSERT INTO `citasservicios` VALUES (5,NULL,NULL),(6,NULL,2),(7,NULL,3),(8,30,NULL),(9,30,3),(10,30,2),(11,31,3),(12,31,NULL),(13,31,5),(14,31,6),(15,NULL,NULL),(16,NULL,3),(17,NULL,4),(18,NULL,5),(19,NULL,2),(20,33,NULL),(21,33,3),(22,33,5),(23,33,2),(24,33,4),(25,33,8);
 /*!40000 ALTER TABLE `citasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `servicios` (
   `nombre` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (1,'Corte de Cabello Niño',60.00),(2,'Corte de Cabello Hombre',80.00),(3,'Corte de Barba',60.00),(4,'Peinado Mujer',80.00),(5,'Peinado Hombre',60.00),(6,'Tinte',300.00),(7,'Uñas',400.00),(8,'Lavado de Cabello',50.00),(9,'Tratamiento Capilar',150.00);
+INSERT INTO `servicios` VALUES (2,'Corte de Cabello Hombre',80.00),(3,'Corte de Barba',60.00),(4,'Peinado Mujer',80.00),(5,'Peinado Hombre',60.00),(6,'Tinte',300.00),(7,'Uñas',400.00),(8,'Lavado de Cabello',50.00),(9,'Tratamiento Capilar',150.00),(13,' Tratamiento de Bigote',120.00);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-13  0:50:05
+-- Dump completed on 2023-06-14  0:58:22

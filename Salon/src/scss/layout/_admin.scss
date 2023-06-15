@@ -27,5 +27,18 @@
             color: v.$blanco;
         }
     }
+}
 
+.servicios{
+    @extend .citas; //Se heredan las caracteristicas del que extiende
+
+    .acciones {
+        margin: 0;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .boton-eliminar {
+        margin: 0;
+    }
 }
