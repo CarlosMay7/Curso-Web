@@ -34,7 +34,7 @@ class Email{
 
         $contenido = "<html>";
         $contenido.= "<p>Hola <strong>" . $this->nombre . "</strong> has creado tu cuenta en este salón, confírmala presionando el siguiente enlace</p>";
-        $contenido.= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";
+        $contenido.= "<p>Presiona aquí: <a href='http://" . $_ENV['URL'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";
         $contenido.= "<p>Si tú no solicitaste este cambio ignora este mail</p>";
         $contenido .= "</html>";
 
@@ -64,7 +64,7 @@ class Email{
 
         $contenido = "<html>";
         $contenido.= "<p>Hola <strong>" . $this->nombre . "</strong> Has solicitado reestablecer tu password, sigue el enlace para hacerlo</p>";
-        $contenido.= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer Password</a></p>";
+        $contenido.= "<p>Presiona aquí: <a href='http://" . $_ENV['URL'] . "/recuperar?token=" . $this->token . "'>Reestablecer Password</a></p>";
         $contenido.= "<p>Si tú no solicitaste este cambio ignora este mail</p>";
         $contenido .= "</html>";
 
