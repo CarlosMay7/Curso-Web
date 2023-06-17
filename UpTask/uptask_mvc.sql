@@ -39,7 +39,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (10,' Carlos','correo@correo.com','$2y$10$uG0Ub4uy1TQezcN4kRUCWecjks0Ltk8iN/IEpAfUbQf0rjKJpfN5W','',1),(11,' Carlos VH','virtual@correo.com','$2y$10$pFnGFFDK6htNbtINNkMRPuljpuSjquLpmMpmFS8XSarzINSZ1DHR.','',1);
+INSERT INTO `usuarios` VALUES (10,' Carlos','correo@correo.com','$2y$10$9FjUHRa2nXZIfcGhAcsM6uhxD5CMHGZDamgPNEGLVUNqFN6y9L8eO','',1),(11,' Carlos VH','virtual@correo.com','$2y$10$pFnGFFDK6htNbtINNkMRPuljpuSjquLpmMpmFS8XSarzINSZ1DHR.','',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-16  2:13:36
+-- Dump completed on 2023-06-17  1:42:38
