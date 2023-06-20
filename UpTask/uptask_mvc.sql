@@ -30,7 +30,7 @@ CREATE TABLE `proyectos` (
   PRIMARY KEY (`id`),
   KEY `propietarioid` (`propietarioid`),
   CONSTRAINT `proyectos_ibfk_1` FOREIGN KEY (`propietarioid`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `proyectos` (
 
 LOCK TABLES `proyectos` WRITE;
 /*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
-INSERT INTO `proyectos` VALUES (1,' Nuevo','af440d7bef46f2e67df37e1293e74c4b',10),(7,' Proyecto Prueba','bfce536b4a58f1cecde811b17c674c8b',10),(8,' Proyecto Otro Usuario','135adc41be358657526f8c2e621a735f',11);
+INSERT INTO `proyectos` VALUES (1,' Nuevo','af440d7bef46f2e67df37e1293e74c4b',10),(7,' Proyecto Prueba','bfce536b4a58f1cecde811b17c674c8b',10),(9,' Proyectoto','763c4d74ef99163b429de6a97da9c5c3',10),(10,' Cuarto Proyecto','3cfbaff4d0d8a586247f42c224560aa1',10);
 /*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `usuarios` (
   `token` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `confirmado` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (10,' Carlos','correo@correo.com','$2y$10$4Sp/4636oE4TbnbN36abQuGBdHL4GH5dsO8t4Hw2qwV4oXNtIQK1m','',1),(11,' Carlos VH','virtual@correo.com','$2y$10$pFnGFFDK6htNbtINNkMRPuljpuSjquLpmMpmFS8XSarzINSZ1DHR.','',1);
+INSERT INTO `usuarios` VALUES (10,' Carlos','correo@correo.com','$2y$10$wvHm6jQddPR.b808iUyvqeM415c7ZTG5KmGIwp0EaB5LdHx7df/FO','',1),(11,' Carlos VH','virtual@correo.com','$2y$10$pFnGFFDK6htNbtINNkMRPuljpuSjquLpmMpmFS8XSarzINSZ1DHR.','',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -80,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-18 23:07:35
+-- Dump completed on 2023-06-20  1:27:48
