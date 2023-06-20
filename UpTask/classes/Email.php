@@ -20,9 +20,9 @@ class Email {
         $mail->isSMTP();
         $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '856107c79736a8';
-        $mail->Password = 'f06aa13c680c16';
+        $mail->Port = $_ENV['MAILT_PORT'];
+        $mail->Username = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_PASS'];
 
         $mail->setFrom("cuentas@uptask.com");
         $mail->addAddress("cuentas@uptask.com", "uptask.com");
@@ -47,9 +47,9 @@ class Email {
         $mail->isSMTP();
         $mail->Host = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '856107c79736a8';
-        $mail->Password = 'f06aa13c680c16';
+        $mail->Port = $_ENV['MAILT_PORT'];
+        $mail->Username = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_PASS'];
 
         $mail->setFrom("cuentas@uptask.com");
         $mail->addAddress("cuentas@uptask.com", "uptask.com");
