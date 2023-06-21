@@ -21,6 +21,10 @@
         opacity: 0;
         border-radius: 1rem;
 
+        input[type="text"] {
+            border: 1px solid v.$gris;
+            border-radius: 0.5rem;
+        }
         .opciones {
             display: flex;
             justify-content: space-around;

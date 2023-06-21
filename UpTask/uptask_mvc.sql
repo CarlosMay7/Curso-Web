@@ -44,6 +44,34 @@ INSERT INTO `proyectos` VALUES (1,' Nuevo','af440d7bef46f2e67df37e1293e74c4b',10
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tareas`
+--
+
+DROP TABLE IF EXISTS `tareas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tareas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT NULL,
+  `proyectoid` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `proyectoid` (`proyectoid`),
+  CONSTRAINT `tareas_ibfk_1` FOREIGN KEY (`proyectoid`) REFERENCES `proyectos` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tareas`
+--
+
+LOCK TABLES `tareas` WRITE;
+/*!40000 ALTER TABLE `tareas` DISABLE KEYS */;
+INSERT INTO `tareas` VALUES (1,' Tarea de prueba proyecto 1',0,1),(2,' Otra Tarea',0,1),(3,' Una más',0,1),(4,' Tarea',0,7),(5,' Tarea',0,7),(6,' Otra',0,7),(7,' Una más',0,7);
+/*!40000 ALTER TABLE `tareas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -80,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-20  1:27:48
+-- Dump completed on 2023-06-21  2:08:28
