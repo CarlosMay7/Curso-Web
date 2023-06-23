@@ -1,8 +1,79 @@
 (function(){ //IIFE Immediately invoked function expression. Forma para proteger variables de la lectura en otros archivos
+
+    obtenerTareas();
+    let tareas = [];
+
     //Boton para agregar modal agregar tarea
     const btnNuevaTarea = document.querySelector("#agregar-tarea");
 
     btnNuevaTarea.addEventListener("click", mostrarFormulario);
+
+    async function obtenerTareas(){
+        try {
+            const id = obtenerProyecto();
+            const url = `/api/tareas?id=${id}`;
+
+            const respuesta = await fetch(url);
+
+            const resultado = await respuesta.json();
+
+            tareas = resultado.tareas;
+            mostrarTareas();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function mostrarTareas(){
+
+        limpiarTareas();
+        if(tareas.length === 0){
+            const contenedorTareas = document.querySelector("#listado-tareas");
+            const textoNoTareas = document.createElement("LI");
+            textoNoTareas.textContent = "Aún No Hay Tareas";
+            textoNoTareas.classList.add("no-tareas");
+
+            contenedorTareas.appendChild(textoNoTareas);
+            return;
+        }
+
+        const estados = {
+            0: "Pendiente",
+            1: "Completa"
+        }
+        tareas.forEach(tarea => {
+            const contenedorTarea = document.createElement("LI");
+            contenedorTarea.dataset.tareaId = tarea.id;
+            contenedorTarea.classList.add("tarea");
+
+            const nombreTarea = document.createElement("P");
+            nombreTarea.textContent = tarea.nombre;
+
+            const opcionesDiv = document.createElement("DIV");
+            opcionesDiv.classList.add("opciones"); 
+
+            //Botones
+            const btnEstado = document.createElement("BUTTON");
+            btnEstado.classList.add("estado-tarea");
+            btnEstado.classList.add(`${estados[tarea.estado].toLowerCase()}`);
+            btnEstado.textContent = estados[tarea.estado];
+            btnEstado.dataset.estadoTarea = tarea.estado;
+
+            const btnEliminar = document.createElement("BUTTON");
+            btnEliminar.classList.add("eliminar-tarea");
+            btnEliminar.dataset.idTarea = tarea.id;
+            btnEliminar.textContent = "Eliminar";
+
+            opcionesDiv.appendChild(btnEstado);
+            opcionesDiv.appendChild(btnEliminar);
+
+            contenedorTarea.appendChild(nombreTarea);
+            contenedorTarea.appendChild(opcionesDiv);
+
+            const listadoTareas = document.querySelector("#listado-tareas");
+            listadoTareas.appendChild(contenedorTarea);
+        });
+    }
 
     function mostrarFormulario(){
         const modal = document.createElement("DIV");
@@ -90,14 +161,13 @@
 
 
     async function agregarTarea(tarea){
-        const host = "uptask.cm"; //Dejo esta variable en lo que busco como usar variables de entorno en JJS
         //Construir la peticion
         const datos = new FormData();
         datos.append("nombre", tarea);
         datos.append("proyectoid", obtenerProyecto());
 
         try {
-            const url = "http://"+ host +"/api/tarea";
+            const url = "/api/tarea";
             const respuesta = await fetch(url, {
                 method: "POST",
                 body: datos
@@ -113,6 +183,17 @@
                 setTimeout(() => {
                     modal.remove();
                 }, 3000);
+
+                //Agregar el objeto de tarea al global de tareas
+                const tareaObj = {
+                    id: String(resultado.id),
+                    nombre: tarea,
+                    estado: 0,
+                    proyectoId: resultado.proyectoId
+                }
+
+                tareas = [...tareas, tareaObj];
+                mostrarTareas();
             }
         } catch (error) {
             console.log(error);
@@ -123,5 +204,13 @@
         const proyectoParams = new URLSearchParams(window.location.search);
         const proyecto = Object.fromEntries(proyectoParams.entries());
         return proyecto.id;
+    }
+
+    function limpiarTareas(){
+        const listadoTareas = document.querySelector("#listado-tareas");
+
+        while(listadoTareas.firstChild){
+            listadoTareas.removeChild(listadoTareas.firstChild);
+        }
     }
 })(); //Hace que se ejecute la funcion inmediatamente

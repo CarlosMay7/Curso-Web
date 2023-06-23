@@ -14,6 +14,7 @@ class TareaController {
         }
 
         $proyecto = Proyecto::where("url", $proyectoId);
+
         session_start();
 
         if(!$proyecto || $proyecto->propietarioid !== $_SESSION["id"]){
@@ -22,7 +23,7 @@ class TareaController {
 
         $tareas = Tarea::belongsTo("proyectoid", $proyecto->id);
 
-        echo json_encode($tareas);
+        echo json_encode(["tareas" => $tareas]);
     }
 
     public static function crear(){
@@ -50,7 +51,8 @@ class TareaController {
             $respuesta = [
                 "tipo" => "exito",
                 "id" => $resultado["id"],
-                "mensaje" => "Tarea agregada exitosamente"
+                "mensaje" => "Tarea agregada exitosamente",
+                "proyectoId" => $proyecto->id
             ];
 
             echo json_encode($respuesta);
