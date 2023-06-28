@@ -32,7 +32,14 @@ class AuthController {
                         $_SESSION['nombre'] = $usuario->nombre;
                         $_SESSION['apellido'] = $usuario->apellido;
                         $_SESSION['email'] = $usuario->email;
-                        $_SESSION['admin'] = $usuario->admin ?? null;
+                        $_SESSION['admin'] = $usuario->admin ?? 0;
+
+                        //Redireccion
+                        if($usuario->admin){
+                            header("Location: /admin/dashboard");
+                        } else {
+                            header("Location: /finalizar-registro");
+                        }
                         
                     } else {
                         Usuario::setAlerta('error', 'Password Incorrecto');
@@ -169,7 +176,6 @@ class AuthController {
             $token_valido = false;
         }
 
-
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Añadir el nuevo password
@@ -190,7 +196,7 @@ class AuthController {
 
                 // Redireccionar
                 if($resultado) {
-                    header('Location: /');
+                    header('Location: /login');
                 }
             }
         }
@@ -223,7 +229,7 @@ class AuthController {
 
         if(empty($usuario)) {
             // No se encontró un usuario con ese token
-            Usuario::setAlerta('error', 'Token No Válido');
+            Usuario::setAlerta('error', 'Token No Válido, la cuenta no pudo ser confirmada');
         } else {
             // Confirmar la cuenta
             $usuario->confirmado = 1;
@@ -233,7 +239,7 @@ class AuthController {
             // Guardar en la BD
             $usuario->guardar();
 
-            Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');
+            Usuario::setAlerta('exito', 'Cuenta Comprobada Exitosamente');
         }
 
      

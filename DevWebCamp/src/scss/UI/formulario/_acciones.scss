@@ -10,4 +10,9 @@
         font-size: 2rem;
         font-weight: v.$delgada;
     }
+
+    &--centrar {
+        @extend .acciones;
+        justify-content: center;
+    }
 }

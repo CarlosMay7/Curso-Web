@@ -52,6 +52,10 @@
     width: min(95%, 140rem);
     margin: 0 auto;
 }
+@mixin contenedor-md {
+    width: min(95%, 80rem);
+    margin: 0 auto;
+}
 
 @mixin contenedor-sm {
     width: min(95%, 60rem);
@@ -125,4 +129,21 @@
     &__ocultar {
         display: none;
     }
+}
+
+@mixin enlace {
+    all: unset;
+    color: v.$blanco;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: v.$bold;
+
+    &:hover {
+        color: v.$azul;
+        cursor: pointer;
+    }
+}
+
+@mixin shadow {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
