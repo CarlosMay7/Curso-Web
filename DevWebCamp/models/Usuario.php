@@ -18,7 +18,6 @@ class Usuario extends ActiveRecord {
     public $token;
     public $admin;
 
-    
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;

@@ -29,6 +29,10 @@
         @include m.texto-fluido(2rem, 3rem);
     }
 
+    &__nav {
+
+    }
+
     &__form {
         display: flex;
         justify-content: center;
@@ -41,6 +45,7 @@
     &__grid {
         display: flex;
         flex: 1;
+        overflow-y: auto; 
     }
 
     &__sidebar {
@@ -86,6 +91,7 @@
     &__contenido {
         padding: 1rem 1rem 3rem 1rem;
         width: 100%;
+        overflow-y: auto;
         @include m.tablet{
             padding: 1rem 5rem 3rem 5rem;
         }

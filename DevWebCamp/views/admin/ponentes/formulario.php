@@ -73,9 +73,8 @@
             placeholder="Ej: Node.js, PHP, CSS" 
         >
 
-        <div id="tags" class="formulario__listado">
-            <input type="hidden" name="tags" value="<?php echo $ponente->tags ?? ""; ?>">
-        </div>
+        <div id="tags" class="formulario__listado"></div>
+        <input type="hidden" name="tags" value="<?php echo $ponente->tags ?? ""; ?>">
     </div>
 </fieldset>
 
