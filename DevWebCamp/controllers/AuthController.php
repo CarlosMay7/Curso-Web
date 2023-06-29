@@ -189,7 +189,7 @@ class AuthController {
                 $usuario->hashPassword();
 
                 // Eliminar el Token
-                $usuario->token = null;
+                $usuario->token = "";
 
                 // Guardar el usuario en la BD
                 $resultado = $usuario->guardar();
