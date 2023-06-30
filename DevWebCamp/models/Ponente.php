@@ -11,6 +11,7 @@ class Ponente extends ActiveRecord {
     public $ciudad;
     public $pais;
     public $imagen;
+    public $imagenActual;
     public $tags;
     public $redes;
 
@@ -22,6 +23,7 @@ class Ponente extends ActiveRecord {
         $this->ciudad = $args['ciudad'] ?? '';
         $this->pais = $args['pais'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
+        $this->imagenActual = $args['imagenActual'] ?? '';
     }
 
     public function validar() {
@@ -46,4 +48,5 @@ class Ponente extends ActiveRecord {
     
         return self::$alertas;
     }
+
 }
