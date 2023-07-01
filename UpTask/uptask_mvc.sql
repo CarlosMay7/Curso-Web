@@ -58,7 +58,7 @@ CREATE TABLE `tareas` (
   PRIMARY KEY (`id`),
   KEY `proyectoid` (`proyectoid`),
   CONSTRAINT `tareas_ibfk_1` FOREIGN KEY (`proyectoid`) REFERENCES `proyectos` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `tareas` (
 
 LOCK TABLES `tareas` WRITE;
 /*!40000 ALTER TABLE `tareas` DISABLE KEYS */;
-INSERT INTO `tareas` VALUES (1,' Tarea de prueba proyecto 1',1,1),(2,' Otra Tarea',0,1),(3,' Una más',0,1),(4,' Tarea',0,7),(5,' Tarea',0,7),(6,' Otra',0,7),(7,' Una más',0,7),(9,' Una con VDOM',0,1);
+INSERT INTO `tareas` VALUES (2,'Otra Tarea',1,1),(3,' Una más',1,1),(4,' Tarea',0,7),(5,' Tarea',0,7),(6,' Otra',0,7),(7,' Una más',0,7),(9,' Una con VDOM',0,1),(14,'Probando Actualizar',0,1),(16,'Una tarea nueva más',1,1);
 /*!40000 ALTER TABLE `tareas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +95,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (10,' Carlos','correo@correo.com','$2y$10$wvHm6jQddPR.b808iUyvqeM415c7ZTG5KmGIwp0EaB5LdHx7df/FO','',1),(11,' Carlos VH','virtual@correo.com','$2y$10$pFnGFFDK6htNbtINNkMRPuljpuSjquLpmMpmFS8XSarzINSZ1DHR.','',1);
+INSERT INTO `usuarios` VALUES (10,' Carlos May','correo@correo.com','$2y$10$XB1n4nBgVx3G0oja9gvutu.F.N5VgVUpI10O4c.QKmvlDGI.T759.','',1),(11,' Carlos VH','virtual@correo.com','$2y$10$pFnGFFDK6htNbtINNkMRPuljpuSjquLpmMpmFS8XSarzINSZ1DHR.','',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-22  1:18:54
+-- Dump completed on 2023-06-25 22:08:33
