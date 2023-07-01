@@ -14,19 +14,24 @@ class PonentesController {
         if(!$paginaActual || $paginaActual<1){
             header("Location: /admin/ponentes?page=1");
         }
-        $registrosPagina = 10;
+        $registrosPagina = 7;
         $totalRegistros = Ponente::total();
 
         $paginacion = new Paginacion($paginaActual, $registrosPagina, $totalRegistros);
 
-        $ponentes = Ponente::all();
+        if($paginacion->totalPaginas() < $paginaActual){
+            header("Location: /admin/ponentes?page=1");
+        }
+
+        $ponentes = Ponente::paginar($registrosPagina, $paginacion->offset());
 
         if(!isAdmin()){
             header("Location: /login");
         }
         $router->render("admin/ponentes/index", [ 
             "titulo" => "Ponentes / Conferencistas",
-            "ponentes" => $ponentes
+            "ponentes" => $ponentes,
+            "paginacion" => $paginacion->paginacion()
         ]);
     }
 

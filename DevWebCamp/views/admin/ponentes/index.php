@@ -59,3 +59,7 @@
         }
     ?>
 </div>
+
+<?php 
+    echo $paginacion;
+?>
