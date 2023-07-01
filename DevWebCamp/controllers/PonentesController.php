@@ -25,7 +25,7 @@ class PonentesController {
 
         $ponentes = Ponente::paginar($registrosPagina, $paginacion->offset());
 
-        if(!isAdmin()){
+        if(!isAuth() || !isAdmin()){
             header("Location: /login");
         }
         $router->render("admin/ponentes/index", [ 
@@ -36,7 +36,8 @@ class PonentesController {
     }
 
     public static function crear(Router $router){
-        if(!isAdmin()){
+        
+        if(!isAuth() || !isAdmin()){
             header("Location: /login");
         }
 
@@ -44,9 +45,6 @@ class PonentesController {
         $ponente = new Ponente;
 
         if($_SERVER["REQUEST_METHOD"] === "POST"){
-            if(!isAdmin()){
-                header("Location: /login");
-            }
             //Verificar que haya imagen
             if(!empty($_FILES["imagen"]["tmp_name"])){
                 $carpetaImagenes = "../public/img/speakers";
@@ -98,7 +96,7 @@ class PonentesController {
     }
 
     public static function editar (Router $router){
-        if(!isAdmin()){
+        if(!isAuth() || !isAdmin()){
             header("Location: /login");
         }
 
