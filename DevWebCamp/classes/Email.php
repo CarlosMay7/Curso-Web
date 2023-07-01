@@ -22,11 +22,11 @@ class Email {
          // create a new object
          $mail = new PHPMailer();
          $mail->isSMTP();
-         $mail->Host = $_ENV['EMAIL_HOST'];
+         $mail->Host = $_ENV['MAILT_HOST'];
          $mail->SMTPAuth = true;
-         $mail->Port = $_ENV['EMAIL_PORT'];
-         $mail->Username = $_ENV['EMAIL_USER'];
-         $mail->Password = $_ENV['EMAIL_PASS'];
+         $mail->Port = $_ENV['MAILT_PORT'];
+         $mail->Username = $_ENV['MAILT_USER'];
+         $mail->Password = $_ENV['MAILT_USER'];
      
          $mail->setFrom('cuentas@devwebcamp.com');
          $mail->addAddress($this->email, $this->nombre);
@@ -53,11 +53,11 @@ class Email {
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->Host = $_ENV['MAILT_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = $_ENV['EMAIL_PORT'];
-        $mail->Username = $_ENV['EMAIL_USER'];
-        $mail->Password = $_ENV['EMAIL_PASS'];
+        $mail->Port = $_ENV['MAILT_PORT'];
+        $mail->Username = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_USER'];
     
         $mail->setFrom('cuentas@devwebcamp.com');
         $mail->addAddress($this->email, $this->nombre);

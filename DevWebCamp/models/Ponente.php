@@ -24,6 +24,7 @@ class Ponente extends ActiveRecord {
         $this->pais = $args['pais'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
         $this->imagenActual = $args['imagenActual'] ?? '';
+        $this->redes = $args ["redes"] ?? "";
     }
 
     public function validar() {
