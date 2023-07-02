@@ -2,7 +2,7 @@
     <legend class="formulario__legend">Información Personal</legend>
 
     <div class="formulario__campo">
-        <label for="nombre" class="formulario--label">Nombre</label>
+        <label for="nombre" class="formulario__label">Nombre</label>
         <input 
             type="text" 
             class="formulario__input" 
@@ -14,7 +14,7 @@
     </div>
 
     <div class="formulario__campo">
-        <label for="apellido" class="formulario--label">Apellido</label>
+        <label for="apellido" class="formulario__label">Apellido</label>
         <input 
             type="text" 
             class="formulario__input" 
@@ -26,7 +26,7 @@
     </div>
 
     <div class="formulario__campo">
-        <label for="ciudad" class="formulario--label">Ciudad</label>
+        <label for="ciudad" class="formulario__label">Ciudad</label>
         <input 
             type="text" 
             class="formulario__input" 
@@ -38,7 +38,7 @@
     </div>
 
     <div class="formulario__campo">
-        <label for="pais" class="formulario--label">País</label>
+        <label for="pais" class="formulario__label">País</label>
         <input 
             type="text" 
             class="formulario__input" 
@@ -50,7 +50,7 @@
     </div>
 
     <div class="formulario__campo">
-        <label for="imagen" class="formulario--label">Imagen</label>
+        <label for="imagen" class="formulario__label">Imagen</label>
         <input 
             type="file" 
             class="formulario__input formulario__input--file" 
@@ -78,7 +78,7 @@
     <legend class="formulario__legend">Información Personal Extra</legend>
 
     <div class="formulario__campo">
-        <label for="tags_input" class="formulario--label">Áreas de Experiencia (Separadas por coma)</label>
+        <label for="tags_input" class="formulario__label">Áreas de Experiencia (Separadas por coma)</label>
         <input 
             type="text" 
             class="formulario__input" 
