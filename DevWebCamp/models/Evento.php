@@ -10,9 +10,13 @@ class Evento extends ActiveRecord {
     public $descripcion;
     public $disponibles;
     public $categoria_id;
+    public $categoria;
     public $dia_id;
+    public $dia;
     public $hora_id;
+    public $hora;
     public $ponente_id;
+    public $ponente;
 
     public function __construct($args = []){
         $this->id = $args['id'] ?? null;
@@ -20,9 +24,13 @@ class Evento extends ActiveRecord {
         $this->descripcion = $args['descripcion'] ?? '';
         $this->disponibles = $args['disponibles'] ?? '';
         $this->categoria_id = $args['categoria_id'] ?? '';
+        $this->categoria = $args['categoria'] ?? '';
         $this->dia_id = $args['dia_id'] ?? '';
+        $this->dia = $args['dia'] ?? '';
         $this->hora_id = $args['hora_id'] ?? '';
+        $this->hora = $args['hora'] ?? '';
         $this->ponente_id = $args ["ponente_id"] ?? "";
+        $this->ponente = $args ["ponente"] ?? "";
     }
 
     // Mensajes de validación para la creación de un evento
