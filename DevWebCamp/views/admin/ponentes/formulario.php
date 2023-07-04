@@ -67,7 +67,7 @@
             <picture>
                 <source srcset="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.webp" type="image/webp">
                 <source srcset="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.png" type="image/png">
-                <img src="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.png" alt="imagen ponente">
+                <img loading="lazy" src="<?php echo $_ENV["HOST"] . "/img/speakers/" . $ponente->imagen; ?>.png" alt="imagen ponente">
             </picture>
         </div>
     <?php } ?>

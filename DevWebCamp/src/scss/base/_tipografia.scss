@@ -21,3 +21,7 @@ h3 {
 [class$="__heading"]{ //Busca todas las clases que terminen con __heading y le aplica estilos
     @include m.nombre-pagina;
 }
+
+[class$="__descripcion"]{ //Busca todas las clases que terminen con __descripcion y le aplica estilos
+    @include m.descripcion-pagina;
+}
