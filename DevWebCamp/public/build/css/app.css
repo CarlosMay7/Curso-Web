@@ -364,7 +364,7 @@ h3 {
 }
 
 .auth {
-  width: min(95%, 140rem);
+  width: min(95%, 80rem);
   margin: 0 auto;
 }
 
@@ -480,6 +480,10 @@ h3 {
 .evento__nombre {
   font-size: 2.4rem;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .evento__introduccion {
   font-size: 1.6rem;

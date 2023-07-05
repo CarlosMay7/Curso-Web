@@ -1,5 +1,5 @@
 @use 'base/mixins' as m;
 
 .auth {
-    @include m.contenedor;
+    @include m.contenedor-md;
 }
