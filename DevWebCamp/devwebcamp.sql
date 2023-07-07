@@ -197,7 +197,7 @@ CREATE TABLE `registros` (
   KEY `paquete_id` (`paquete_id`),
   CONSTRAINT `registros_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `registros_ibfk_2` FOREIGN KEY (`paquete_id`) REFERENCES `paquetes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,6 +206,7 @@ CREATE TABLE `registros` (
 
 LOCK TABLES `registros` WRITE;
 /*!40000 ALTER TABLE `registros` DISABLE KEYS */;
+INSERT INTO `registros` VALUES (1,1,'0CB846400K795190X','36738421',27),(2,1,'2JC80229JM384005K','4e7778fc',12);
 /*!40000 ALTER TABLE `registros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +227,7 @@ CREATE TABLE `usuarios` (
   `token` varchar(13) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +236,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (12,' Carlos','May','correo@correo.com','$2y$10$kqo.okyiKX5TLiiBqxr7vupJky3nfsxkS0SJnfdQ45NgYNwryNONS',1,'',0),(13,' Admin','Web','admin@correo.com','$2y$10$.vNLO1fk2yfC/87aPmm/X.a4sk61pIkSwHO4BqKhSd8UsRAlTU9KO',1,'',1),(24,' carlos','may','correo2@correo.com','$2y$10$cfnoYrXfi8b7jLoTHEcop.NGTeyaUSSMeIV0Kl4XZ9EItbDn7dPC2',1,'',0),(25,' Carl','njmkl','v5jnckml@xerctvybu.com','$2y$10$rwbrNqEfABUD2BT9HIKedetd8yDatvJUUIav0AbLtY4dis89pDRue',0,'64a5cce294ca1',0),(26,' Carl','njmkl','v5jnckmhl@xerctvybu.com','$2y$10$8rnMtttRuPSGK/PsaWWDfe4SwUdPYFiCZUrWYhPxnhiAsa.Z2Yrnq',1,'',0);
+INSERT INTO `usuarios` VALUES (12,' Carlos','May','correo@correo.com','$2y$10$kqo.okyiKX5TLiiBqxr7vupJky3nfsxkS0SJnfdQ45NgYNwryNONS',1,'',0),(13,' Admin','Web','admin@correo.com','$2y$10$.vNLO1fk2yfC/87aPmm/X.a4sk61pIkSwHO4BqKhSd8UsRAlTU9KO',1,'',1),(27,' Prueba','Paypal','paypal@correo.com','$2y$10$HUBtmSIKLrS6I6nkKG9PK.rOBopyK7bdDu4j7yK4XMUom2.YhSPGy',1,'',0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -248,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-06  0:20:50
+-- Dump completed on 2023-07-07  2:26:41

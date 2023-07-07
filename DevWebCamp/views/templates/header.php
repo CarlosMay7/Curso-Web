@@ -3,7 +3,7 @@
         <nav class="header__navegacion">
             <?php if(isAuth()){ ?>
                 <a href="<?php echo (isAdmin()) ? "/admin/dashboard" : "/finalizar-registro"; ?>" class="header__enlace">Administrar</a>
-                <form method="POST" action="logout" class="header__form">
+                <form method="POST" action="/logout" class="header__form">
                     <input type="submit" value="Cerrar Sesión" class="header__submit">
                 </form>
             <?php } else { ?>
@@ -23,7 +23,7 @@
             <p class="header__texto">Octubre-5-6-2023</p>
             <p class="header__texto header__texto--modalidad">En Linea - Presencial</p>
 
-            <a href="/registro" class="header__boton">Comprar Pase</a>
+            <a href="/finalizar-registro" class="header__boton">Comprar Pase</a>
         </div>
     </div>
 </header>

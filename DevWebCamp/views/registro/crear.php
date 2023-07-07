@@ -28,8 +28,11 @@
             </ul>
 
             <p class="paquete__precio">$199</p>
-            <!-- Set up a container element for the button
-            <div id="paypal-button-container"></div> -->
+            <div id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
         </div>
         <div <?php aos_animacion(); ?> class="paquete">
             <h3 class="paquete__nombre">Pase Virtual</h3>
@@ -46,56 +49,51 @@
 </main>
 
 
-
-<!-- Replace "test" with your own sandbox Business account app client ID -->
-<script src="https://www.paypal.com/sdk/js?client-id=0qsgl26539527&currency=USD"></script>
-
+<!-- Reemplazar CLIENT_ID por tu client id proporcionado al crear la app desde el developer dashboard) -->
+<script src="https://www.paypal.com/sdk/js?client-id=<?php echo $_ENV["PP_CLIENT_ID"] ?>&currency=USD" data-sdk-integration-source="button-factory"></script>
+ 
 <script>
-    /*
-    paypal.Buttons({
-    // Order is created on the server and the order id is returned
-    createOrder() {
-        return fetch("/my-server/create-paypal-order", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'pay',
         },
-        // use the "body" param to optionally pass additional order information
-        // like product skus and quantities
-        body: JSON.stringify({
-            cart: [
-            {
-                sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
-                quantity: "YOUR_PRODUCT_QUANTITY",
-            },
-            ],
-        }),
-        })
-        .then((response) => response.json())
-        .then((order) => order.id);
-    },
-    // Finalize the transaction on the server after payer approval
-    onApprove(data) {
-        return fetch("/my-server/capture-paypal-order", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
+ 
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"1","amount":{"currency_code":"USD","value":199}}]
+          });
         },
-        body: JSON.stringify({
-            orderID: data.orderID
-        })
-        })
-        .then((response) => response.json())
-        .then((orderData) => {
-        // Successful capture! For dev/demo purposes:
-        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-        const transaction = orderData.purchase_units[0].payments.captures[0];
-        alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
-        // When ready to go live, remove the alert and show a success message within this page. For example:
-        // const element = document.getElementById('paypal-button-container');
-        // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-        // Or go to another URL:  window.location.href = 'thank_you.html';
-        });
+ 
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+            const datos = new FormData();
+            datos.append("paquete_id", orderData.purchase_units[0].description);
+            datos.append("pago_id", orderData.purchase_units[0].payments.captures[0].id);
+
+            fetch("/finalizar-registro/pagar", {
+                method: "POST",
+                body: datos
+            })
+            .then( respuesta => respuesta.json())
+            .then(resultado => {
+                if(resultado.resultado){
+                    location.href = "/finalizar-registro/conferencias";
+                }
+            })
+            
+          });
+        },
+ 
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
     }
-    }).render('#paypal-button-container');*/
+ 
+  initPayPalButton();
 </script>
