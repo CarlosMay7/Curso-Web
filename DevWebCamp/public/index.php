@@ -4,6 +4,7 @@ require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\ApiEventos;
 use Controllers\ApiPonentes;
+use Controllers\ApiRegalos;
 use MVC\Router;
 use Controllers\AuthController;
 use Controllers\DashboardController;
@@ -62,12 +63,14 @@ $router->get('/admin/regalos', [RegalosController::class, 'index']);
 $router->get('/api/eventos-horario', [ApiEventos::class, 'index']);
 $router->get('/api/ponentes', [ApiPonentes::class, 'index']);
 $router->get('/api/ponente', [ApiPonentes::class, 'ponente']);
+$router->get('/api/regalos', [ApiRegalos::class, 'index']);
 
 //Registro
 $router->get('/finalizar-registro', [RegistroController::class, 'crear']);
 $router->post('/finalizar-registro/gratis', [RegistroController::class, 'gratis']);
 $router->post('/finalizar-registro/pagar', [RegistroController::class, 'pagar']);
 $router->get('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
+$router->post('/finalizar-registro/conferencias', [RegistroController::class, 'conferencias']);
 
 //Boleto Virtual
 $router->get('/boleto', [RegistroController::class, 'boleto']);
