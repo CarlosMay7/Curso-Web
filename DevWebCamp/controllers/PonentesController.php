@@ -9,7 +9,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PonentesController {
     public static function index(Router $router){
-        $paginaActual = $_GET["page"];
+        $paginaActual = $_GET["page"] ?? "";
         $paginaActual = filter_var($paginaActual, FILTER_VALIDATE_INT);
         if(!$paginaActual || $paginaActual<1){
             header("Location: /admin/ponentes?page=1");
@@ -170,10 +170,12 @@ class PonentesController {
     }
 
     public static function eliminar (){
-        if(!isAdmin()){
-            header("Location: /login");
-        }
-        if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+        if($_SERVER["REQUEST_METHOD"] === "POST"){   
+            
+            if(!isAdmin()){
+                header("Location: /login");
+            }
             $id = $_POST["id"];
             $ponente = Ponente::find($id);
 

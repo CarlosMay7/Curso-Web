@@ -1,8 +1,16 @@
 <header class="header">
     <div class="header__contenedor">
         <nav class="header__navegacion">
-            <a href="/registro" class="header__enlace">Registro</a>
-            <a href="/login" class="header__enlace">Iniciar Sesión</a>
+            <?php if(isAuth()){ ?>
+                <a href="<?php echo (isAdmin()) ? "/admin/dashboard" : "/finalizar-registro"; ?>" class="header__enlace">Administrar</a>
+                <form method="POST" action="/logout" class="header__form">
+                    <input type="submit" value="Cerrar Sesión" class="header__submit">
+                </form>
+            <?php } else { ?>
+                <a href="/registro" class="header__enlace">Registro</a>
+                <a href="/login" class="header__enlace">Iniciar Sesión</a>
+
+            <?php } ?>
         </nav>
 
         <div class="header__contenido">
@@ -15,7 +23,7 @@
             <p class="header__texto">Octubre-5-6-2023</p>
             <p class="header__texto header__texto--modalidad">En Linea - Presencial</p>
 
-            <a href="/registro" class="header__boton">Comprar Pase</a>
+            <a href="/finalizar-registro" class="header__boton">Comprar Pase</a>
         </div>
     </div>
 </header>
@@ -29,10 +37,10 @@
         </a>
 
         <nav class="navegacion">
-            <a href="/devwebcamp" class="navegacion__enlace">Evento</a>
-            <a href="/paquetes" class="navegacion__enlace">Paquetes</a>
-            <a href="/workshops-conferencias" class="navegacion__enlace">workshops y Conferencias</a>
-            <a href="registro" class="navegacion__enlace">Comprar Pase</a>
+            <a href="/evento-devwebcamp" class="navegacion__enlace <?php echo pagina_actual("/evento-devwebcamp") ? "navegacion__enlace--actual" : ""; ?>">Evento</a>
+            <a href="/paquetes" class="navegacion__enlace <?php echo pagina_actual("/paquetes") ? "navegacion__enlace--actual" : ""; ?>">Paquetes</a>
+            <a href="/workshops-conferencias" class="navegacion__enlace <?php echo pagina_actual("/workshops-conferencias") ? "navegacion__enlace--actual" : ""; ?>">Workshops y Conferencias</a>
+            <a href="/registro" class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--actual" : ""; ?>">Comprar Pase</a>
         </nav>
     </div>
 </div>

@@ -19,32 +19,32 @@ class Email {
 
     public function enviarConfirmacion() {
 
-         // create a new object
-         $mail = new PHPMailer();
-         $mail->isSMTP();
-         $mail->Host = $_ENV['MAILT_HOST'];
-         $mail->SMTPAuth = true;
-         $mail->Port = $_ENV['MAILT_PORT'];
-         $mail->Username = $_ENV['MAILT_USER'];
-         $mail->Password = $_ENV['MAILT_USER'];
-     
-         $mail->setFrom('cuentas@devwebcamp.com');
-         $mail->addAddress($this->email, $this->nombre);
-         $mail->Subject = 'Confirma tu Cuenta';
+        // create a new object
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = $_ENV['MAILT_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['MAILT_PORT'];
+        $mail->Username = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_PASS'];
+    
+        $mail->setFrom('cuentas@devwebcamp.com');
+        $mail->addAddress($this->email, $this->nombre);
+        $mail->Subject = 'Confirma tu Cuenta';
 
-         // Set HTML
-         $mail->isHTML(true);
-         $mail->CharSet = 'UTF-8';
+        // Set HTML
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
 
-         $contenido = '<html>';
-         $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has Registrado Correctamente tu cuenta en DevWebCamp; pero es necesario confirmarla</p>";
-         $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";       
-         $contenido .= "<p>Si tu no creaste esta cuenta; puedes ignorar el mensaje</p>";
-         $contenido .= '</html>';
-         $mail->Body = $contenido;
+        $contenido = '<html>';
+        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has Registrado Correctamente tu cuenta en DevWebCamp; pero es necesario confirmarla</p>";
+        $contenido .= "<p>Presiona aquí: <a href='" . $_ENV['HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a></p>";       
+        $contenido .= "<p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>";
+        $contenido .= '</html>';
+        $mail->Body = $contenido;
 
-         //Enviar el mail
-         $mail->send();
+        //Enviar el mail
+        $mail->send();
 
     }
 
@@ -57,7 +57,7 @@ class Email {
         $mail->SMTPAuth = true;
         $mail->Port = $_ENV['MAILT_PORT'];
         $mail->Username = $_ENV['MAILT_USER'];
-        $mail->Password = $_ENV['MAILT_USER'];
+        $mail->Password = $_ENV['MAILT_PASS'];
     
         $mail->setFrom('cuentas@devwebcamp.com');
         $mail->addAddress($this->email, $this->nombre);

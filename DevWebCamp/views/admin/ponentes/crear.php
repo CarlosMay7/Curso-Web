@@ -12,7 +12,7 @@
 </div>
 
 <div class="dashboard__contenedor-boton">
-    <a class="dashboard__boton" href="/admin/ponentes/crear">
+    <a class="dashboard__boton" href="/admin/ponentes">
         <i class="fa-solid fa-circle-arrow-left"></i>
         Volver
     </a>
