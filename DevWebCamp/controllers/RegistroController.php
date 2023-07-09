@@ -122,7 +122,7 @@ class RegistroController {
             return;
         }
 
-        //Llenar las talas de referencia
+        //Llenar las tablas de referencia
         $registro->usuario = Usuario::find($registro->usuario_id);
         $registro->paquete = Paquete::find($registro->paquete_id);
 
