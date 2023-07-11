@@ -9,6 +9,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PonentesController {
     public static function index(Router $router){
+        if(!isAdmin()){
+            header("Location: /login");
+        }        
+        
         $paginaActual = $_GET["page"] ?? "";
         $paginaActual = filter_var($paginaActual, FILTER_VALIDATE_INT);
         if(!$paginaActual || $paginaActual<1){
@@ -25,9 +29,7 @@ class PonentesController {
 
         $ponentes = Ponente::paginar($registrosPagina, $paginacion->offset());
 
-        if(!isAuth() || !isAdmin()){
-            header("Location: /login");
-        }
+
         $router->render("admin/ponentes/index", [ 
             "titulo" => "Ponentes / Conferencistas",
             "ponentes" => $ponentes,

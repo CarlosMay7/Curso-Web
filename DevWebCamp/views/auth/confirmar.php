@@ -9,7 +9,7 @@
         if (isset($alertas["exito"])){
     ?>
             <div class="acciones--centrar">
-                <a class="acciones__enlace" href="/login">Iniciar Sesión</a>
+                <a class="acciones__enlace--confirmar" href="/login">Iniciar Sesión</a>
             </div>
     <?php
         }

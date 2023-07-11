@@ -90,7 +90,8 @@
         width: auto;
         align-self: flex-end;
 
-        &--registrar {
+        &--registrar,
+        &--full {
             width: 100%;
         }
     }
