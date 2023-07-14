@@ -40,7 +40,12 @@
             <a href="/evento-devwebcamp" class="navegacion__enlace <?php echo pagina_actual("/evento-devwebcamp") ? "navegacion__enlace--actual" : ""; ?>">Evento</a>
             <a href="/paquetes" class="navegacion__enlace <?php echo pagina_actual("/paquetes") ? "navegacion__enlace--actual" : ""; ?>">Paquetes</a>
             <a href="/workshops-conferencias" class="navegacion__enlace <?php echo pagina_actual("/workshops-conferencias") ? "navegacion__enlace--actual" : ""; ?>">Workshops y Conferencias</a>
-            <a href="/registro" class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--actual" : ""; ?>">Comprar Pase</a>
+            
+            <?php if(isAuth()){ ?>
+                <a href="/finalizar-registro" class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--actual" : ""; ?>">Comprar Pase</a>
+            <?php } else { ?>
+                <a href="/registro" class="navegacion__enlace <?php echo pagina_actual("/registro") ? "navegacion__enlace--actual" : ""; ?>">Comprar Pase</a>
+            <?php } ?>
         </nav>
     </div>
 </div>
